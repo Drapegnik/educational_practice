@@ -1,0 +1,11 @@
+commit 8bef0c3eec35262de06634bc12e5d6450b888146
+Author: drapegnik <ivan.pazhitnykh@gmail.com>
+Date:   Tue Feb 9 23:10:33 2016 +0300
+
+    add status.txt
+
+commit 6d42642ad3ed79effe3f594f6d83d0bf932be79e
+Author: drapegnik <ivan.pazhitnykh@gmail.com>
+Date:   Tue Feb 9 23:08:48 2016 +0300
+
+    add .gitignore
