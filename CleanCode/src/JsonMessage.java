@@ -5,46 +5,37 @@
 public class JsonMessage {
     private String id;
     private String author;
-    private String timestamp;
+    private long timestamp;
     private String message;
 
     public JsonMessage() {
         this.author = "none";
-        this.timestamp = Long.toString(System.currentTimeMillis());
+        this.timestamp = System.currentTimeMillis();
         this.message = "none";
-        this.id = (timestamp+author+message).hashCode()+"";
+        this.id = (timestamp + author + message).hashCode() + "";
     }
 
     public JsonMessage(String author, String message) {
         this.author = author;
-        this.timestamp = Long.toString(System.currentTimeMillis());
+        this.timestamp = System.currentTimeMillis();
         this.message = message;
-        this.id = "#"+(timestamp+author+message).hashCode();
+        this.id = "#" + (timestamp + author + message).hashCode();
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 
-    public String getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
 
     public String getMessage() {
         return message;
@@ -59,7 +50,7 @@ public class JsonMessage {
         return "{" +
                 "'id':'" + id + '\'' +
                 ", 'author':'" + author + '\'' +
-                ", 'timestamp':'" + timestamp +
+                ", 'timestamp':'" + timestamp + '\'' +
                 ", 'message':'" + message + '\'' +
                 '}';
     }
