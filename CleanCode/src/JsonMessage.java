@@ -1,9 +1,11 @@
+import java.util.UUID;
+
 /**
  * Created by Drapegnik on 09.02.16.
  */
 
 public class JsonMessage {
-    private String id;
+    private UUID id;
     private String author;
     private long timestamp;
     private String message;
@@ -12,18 +14,18 @@ public class JsonMessage {
         this.author = "none";
         this.timestamp = System.currentTimeMillis();
         this.message = "none";
-        this.id = (timestamp + author + message).hashCode() + "";
+        this.id = UUID.randomUUID();
     }
 
     public JsonMessage(String author, String message) {
         this.author = author;
         this.timestamp = System.currentTimeMillis();
         this.message = message;
-        this.id = "#" + (timestamp + author + message).hashCode();
+        this.id = UUID.randomUUID();
     }
 
     public String getId() {
-        return id;
+        return id.toString();
     }
 
 
@@ -40,11 +42,7 @@ public class JsonMessage {
     public String getMessage() {
         return message;
     }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
+    
     @Override
     public String toString() {
         return "{" +
