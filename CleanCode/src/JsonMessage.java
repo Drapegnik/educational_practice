@@ -42,7 +42,7 @@ public class JsonMessage {
     public String getMessage() {
         return message;
     }
-    
+
     @Override
     public String toString() {
         return "{" +
