@@ -1,3 +1,5 @@
+package by.bsu.famcs.drapegnik.cleancode;
+
 import java.util.UUID;
 
 /**

@@ -1,3 +1,5 @@
+package by.bsu.famcs.drapegnik.cleancode;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -11,7 +13,7 @@ import java.util.regex.Pattern;
  * Created by Drapegnik on 15.02.16.
  */
 public class UserInteface {
-    private static ArrayList<JsonMessage> data;
+    private static List<JsonMessage> data;
     private static FileWriter log;
 
     public UserInteface() {
@@ -39,8 +41,10 @@ public class UserInteface {
             System.out.println("* searchA [author]/searchK [keyword]/searchR [regexp]");
             System.out.println("* q to exit");
             System.out.println("Note: use 15.02.2016-15:04 date format!");
+
             boolean isContinue = true;
             Scanner sc = new Scanner(System.in);
+
             do {
                 String[] command = sc.nextLine().split("\\s+");
                 try {
@@ -48,9 +52,11 @@ public class UserInteface {
                         case "load":
                             loadMessage(command[1]);
                             break;
+
                         case "save":
                             saveMessage(command[1]);
                             break;
+
                         case "show": {
                             try {
                                 showMessagesbyTerm(command[1], command[2]);
@@ -63,21 +69,27 @@ public class UserInteface {
                             }
                             break;
                         }
+
                         case "delete":
                             deleteMessage(command[1]);
                             break;
+
                         case "searchA":
                             searchMessagesbyAuthor(command[1]);
                             break;
+
                         case "searchK":
                             searchMessagesbyKeyWord(command[1]);
                             break;
+
                         case "searchR":
                             searchMessagesbyRegExp(command[1]);
                             break;
+
                         case "q":
                             isContinue = false;
                             break;
+
                         default:
                             System.out.println("No such commands, try again!");
                             write("unknown command '" + command[0] + "'");
@@ -116,15 +128,18 @@ public class UserInteface {
             int count = 0;
             long fromDate = df.parse(from).getTime();
             long toDate;
+
             if (!to.isEmpty())
                 toDate = df.parse(to).getTime();
             else
                 toDate = System.currentTimeMillis();
+
             for (JsonMessage mes : data)
                 if (mes.getTimestamp() >= fromDate && mes.getTimestamp() <= toDate) {
                     System.out.println(mes);
                     count++;
                 }
+
             write("show " + count + " messages by term from " + df.format(fromDate) + " to " + df.format(toDate));
         } catch (ParseException ex) {
             System.out.println("Some problems with parse date, try again!");
@@ -140,6 +155,7 @@ public class UserInteface {
             data.clear();
             Collections.addAll(data, temp);
         }
+
         System.out.println("load " + data.size() + " messages from " + fileaname);
         write("load " + data.size() + " messages from " + fileaname);
     }
@@ -148,8 +164,10 @@ public class UserInteface {
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(filename))) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(data, writer);
+
             writer.close();
         }
+
         System.out.println("save " + data.size() + " messages to " + filename);
         write("save " + data.size() + " messages to " + filename);
     }
@@ -165,6 +183,7 @@ public class UserInteface {
                 data.remove(mes);
                 break;
             }
+
         write("delete message by id=" + id);
     }
 
@@ -175,6 +194,7 @@ public class UserInteface {
                 System.out.println(mes);
                 count++;
             }
+
         write("find " + count + " messages by " + author);
     }
 
@@ -185,6 +205,7 @@ public class UserInteface {
                 System.out.println(mes);
                 count++;
             }
+
         write("find " + count + " messages by '" + keyword + "' keyword");
     }
 
@@ -195,6 +216,7 @@ public class UserInteface {
                 System.out.println(mes);
                 count++;
             }
+
         write("find " + count + " messages by '" + regexp + "' regexp");
     }
 }
