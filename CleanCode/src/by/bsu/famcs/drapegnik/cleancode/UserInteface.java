@@ -16,74 +16,64 @@ public class UserInteface {
     private static List<JsonMessage> history;
     private static FileWriter log;
 
-    public UserInteface() {
+    public void startApp() {
         try {
             history = new ArrayList<>();
             log = new FileWriter("logfile.txt");
             write("start app");
 
-            loadMessage("input.json");
-            saveMessage("output.json");
-            addMessage("ivan", "lol");
-            showMessages();
-            addMessage("ivan", "Are you ok? lol");
-            searchMessagesbyAuthor("User1");
-            searchMessagesbyKeyWord("Are");
-            searchMessagesbyRegExp("^User\\w*");
-            showMessagesbyTerm("15.02.2015-15:04", "15.02.2016-15:04");
-            deleteMessage("46f408b2-72cb-4307-b6e6-95a8515eb7c0");
+            test();
 
-            System.out.println("Hi, you can use:");
-            System.out.println("* load/save commands with one sting [filename] param");
-            System.out.println("* show/show [from]/show [from] [to]");
-            System.out.println("* delete [id]");
-            System.out.println("* add [mes] [author]");
-            System.out.println("* searchA [author]/searchK [keyword]/searchR [regexp]");
-            System.out.println("* q to exit");
-            System.out.println("Note: use 15.02.2016-15:04 date format!");
+            greeting();
 
             boolean isContinue = true;
             Scanner sc = new Scanner(System.in);
-
             do {
-                String[] command = readCommand(sc);
+                String[] commandList = readCommand(sc);
+                String command = commandList[0];
+                String firstParam = "";
+                String secondParam = "";
                 try {
-                    switch (command[0]) {
+                    firstParam = commandList[1];
+                    secondParam = commandList[2];
+                } catch (ArrayIndexOutOfBoundsException ex1) {
+                }
+
+                try {
+                    switch (command) {
                         case "load":
-                            loadMessage(command[1]);
+                            loadMessage(firstParam);
                             break;
 
                         case "save":
-                            saveMessage(command[1]);
+                            saveMessage(firstParam);
                             break;
 
                         case "show": {
-                            try {
-                                showMessagesbyTerm(command[1], command[2]);
-                            } catch (ArrayIndexOutOfBoundsException ex1) {
-                                try {
-                                    showMessagesbyTerm(command[1], "");
-                                } catch (ArrayIndexOutOfBoundsException ex2) {
-                                    showMessages();
-                                }
+                            if (!secondParam.isEmpty()) {
+                                showMessages(firstParam, secondParam);
+                            } else if (!firstParam.isEmpty()) {
+                                showMessages(firstParam, "");
+                            } else {
+                                showMessages();
                             }
                             break;
                         }
 
                         case "delete":
-                            deleteMessage(command[1]);
+                            deleteMessage(firstParam);
                             break;
 
                         case "searchA":
-                            searchMessagesbyAuthor(command[1]);
+                            searchMessagesByAuthor(firstParam);
                             break;
 
                         case "searchK":
-                            searchMessagesbyKeyWord(command[1]);
+                            searchMessagesByKeyWord(firstParam);
                             break;
 
                         case "searchR":
-                            searchMessagesbyRegExp(command[1]);
+                            searchMessagesByRegExp(firstParam);
                             break;
 
                         case "q":
@@ -92,7 +82,7 @@ public class UserInteface {
 
                         default:
                             System.out.println("No such commands, try again!");
-                            write("unknown command '" + command[0] + "'");
+                            write("unknown command '" + command + "'");
                             break;
                     }
                 } catch (ArrayIndexOutOfBoundsException ex) {
@@ -106,6 +96,30 @@ public class UserInteface {
         } catch (IOException ex) {
             write("Some problems with File IO!");
         }
+    }
+
+    private void greeting() {
+        System.out.println("Hi, you can use:");
+        System.out.println("* load/save commands with one sting [filename] param");
+        System.out.println("* show/show [from]/show [from] [to]");
+        System.out.println("* delete [id]");
+        System.out.println("* add [mes] [author]");
+        System.out.println("* searchA [author]/searchK [keyword]/searchR [regexp]");
+        System.out.println("* q to exit");
+        System.out.println("Note: use 15.02.2016-15:04 date format!");
+    }
+
+    private void test() throws IOException {
+        loadMessage("input.json");
+        saveMessage("output.json");
+        addMessage("ivan", "lol");
+        showMessages();
+        addMessage("ivan", "Are you ok? lol");
+        searchMessagesByAuthor("User1");
+        searchMessagesByKeyWord("Are");
+        searchMessagesByRegExp("^User\\w*");
+        showMessages("15.02.2015-15:04", "15.02.2016-15:04");
+        deleteMessage("46f408b2-72cb-4307-b6e6-95a8515eb7c0");
     }
 
     private String[] readCommand(Scanner sc) {
@@ -126,28 +140,28 @@ public class UserInteface {
         write("show " + history.size() + " messages");
     }
 
-    public void showMessagesbyTerm(String from, String to) {
+    public void showMessages(String dateFrom, String dateTo) {
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy-hh:mm");
         try {
             int count = 0;
-            long fromDate = df.parse(from).getTime();
-            long toDate;
+            long from = df.parse(dateFrom).getTime();
+            long to;
 
-            if (!to.isEmpty())
-                toDate = df.parse(to).getTime();
+            if (!dateTo.isEmpty())
+                to = df.parse(dateTo).getTime();
             else
-                toDate = System.currentTimeMillis();
+                to = System.currentTimeMillis();
 
             for (JsonMessage mes : history)
-                if (mes.getTimestamp() >= fromDate && mes.getTimestamp() <= toDate) {
+                if (mes.getTimestamp() >= from && mes.getTimestamp() <= to) {
                     System.out.println(mes);
                     count++;
                 }
 
-            write("show " + count + " messages by term from " + df.format(fromDate) + " to " + df.format(toDate));
+            write("show " + count + " messages by period from " + df.format(from) + " to " + df.format(to));
         } catch (ParseException ex) {
             System.out.println("Some problems with parse date, try again!");
-            write("Some problems with parse date in showMessagesbyTerm");
+            write("Some problems with parse date in showMessages by period");
         }
     }
 
@@ -182,44 +196,48 @@ public class UserInteface {
     }
 
     public void deleteMessage(String id) {
-        for (JsonMessage mes : history)
+        for (JsonMessage mes : history) {
             if (mes.getId().equals(id)) {
                 history.remove(mes);
                 break;
             }
+        }
 
         write("delete message by id=" + id);
     }
 
-    public void searchMessagesbyAuthor(String author) {
+    public void searchMessagesByAuthor(String author) {
         int count = 0;
-        for (JsonMessage mes : history)
+        for (JsonMessage mes : history) {
             if (mes.getAuthor().equals(author)) {
                 System.out.println(mes);
                 count++;
             }
+        }
 
         write("find " + count + " messages by " + author);
     }
 
-    public void searchMessagesbyKeyWord(String keyword) {
+    public void searchMessagesByKeyWord(String keyword) {
         int count = 0;
-        for (JsonMessage mes : history)
+        for (JsonMessage mes : history) {
             if (mes.getMessage().toLowerCase().contains(keyword.toLowerCase())) {
                 System.out.println(mes);
                 count++;
             }
+        }
 
         write("find " + count + " messages by '" + keyword + "' keyword");
     }
 
-    public void searchMessagesbyRegExp(String regexp) {
+    public void searchMessagesByRegExp(String regexp) {
         int count = 0;
-        for (JsonMessage mes : history)
+        for (JsonMessage mes : history) {
             if (Pattern.matches(regexp, mes.getAuthor()) || Pattern.matches(regexp, mes.getId()) || Pattern.matches(regexp, mes.getMessage())) {
                 System.out.println(mes);
                 count++;
             }
+        }
 
         write("find " + count + " messages by '" + regexp + "' regexp");
     }

@@ -5,6 +5,6 @@ package by.bsu.famcs.drapegnik.cleancode;
  */
 public class MainClass {
     public static void main(String[] args) {
-        new UserInteface();
+        (new UserInteface()).startApp();
     }
 }

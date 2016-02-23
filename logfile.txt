@@ -1,14 +1,17 @@
-23.02.2016-11:24:57 - start app
-23.02.2016-11:24:58 - load 3 messages from input.json
-23.02.2016-11:24:58 - save 3 messages to output.json
-23.02.2016-11:24:58 - add 'lol' message by ivan
-23.02.2016-11:24:58 - show 4 messages
-23.02.2016-11:24:58 - add 'Are you ok? lol' message by ivan
-23.02.2016-11:24:58 - find 2 messages by User1
-23.02.2016-11:24:58 - find 2 messages by 'Are' keyword
-23.02.2016-11:24:58 - find 3 messages by '^User\w*' regexp
-23.02.2016-11:24:58 - show 3 messages by term from 15.02.2015-03:04 to 15.02.2016-03:04
-23.02.2016-11:24:58 - delete message by id=46f408b2-72cb-4307-b6e6-95a8515eb7c0
-23.02.2016-11:25:10 - find 2 messages by '^User\w*' regexp
-23.02.2016-11:31:46 - find 0 messages by 'null' regexp
-23.02.2016-11:31:49 - finish app
+24.02.2016-02:02:45 - start app
+24.02.2016-02:02:45 - load 3 messages from input.json
+24.02.2016-02:02:45 - save 3 messages to output.json
+24.02.2016-02:02:45 - add 'lol' message by ivan
+24.02.2016-02:02:45 - show 4 messages
+24.02.2016-02:02:45 - add 'Are you ok? lol' message by ivan
+24.02.2016-02:02:45 - find 2 messages by User1
+24.02.2016-02:02:45 - find 2 messages by 'Are' keyword
+24.02.2016-02:02:45 - find 3 messages by '^User\w*' regexp
+24.02.2016-02:02:45 - show 3 messages by period from 15.02.2015-03:04 to 15.02.2016-03:04
+24.02.2016-02:02:45 - delete message by id=46f408b2-72cb-4307-b6e6-95a8515eb7c0
+24.02.2016-02:02:51 - show 4 messages
+24.02.2016-02:02:58 - show 2 messages by period from 15.02.2016-03:04 to 24.02.2016-02:02
+24.02.2016-02:03:01 - unknown command '1'
+24.02.2016-02:03:02 - unknown command '2'
+24.02.2016-02:03:22 - find 2 messages by 'User\w*' regexp
+24.02.2016-02:03:24 - finish app
