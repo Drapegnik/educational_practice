@@ -13,12 +13,12 @@ import java.util.regex.Pattern;
  * Created by Drapegnik on 15.02.16.
  */
 public class UserInteface {
-    private static List<JsonMessage> data;
+    private static List<JsonMessage> history;
     private static FileWriter log;
 
     public UserInteface() {
         try {
-            data = new ArrayList<>();
+            history = new ArrayList<>();
             log = new FileWriter("logfile.txt");
             write("start app");
 
@@ -46,7 +46,7 @@ public class UserInteface {
             Scanner sc = new Scanner(System.in);
 
             do {
-                String[] command = sc.nextLine().split("\\s+");
+                String[] command = readCommand(sc);
                 try {
                     switch (command[0]) {
                         case "load":
@@ -108,6 +108,10 @@ public class UserInteface {
         }
     }
 
+    private String[] readCommand(Scanner sc) {
+        return sc.nextLine().split("\\s+");
+    }
+
     private void write(String message) {
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy-hh:mm:ss");
         try {
@@ -118,8 +122,8 @@ public class UserInteface {
     }
 
     public void showMessages() {
-        data.forEach((mes) -> System.out.println(mes));
-        write("show " + data.size() + " messages");
+        history.forEach((mes) -> System.out.println(mes));
+        write("show " + history.size() + " messages");
     }
 
     public void showMessagesbyTerm(String from, String to) {
@@ -134,7 +138,7 @@ public class UserInteface {
             else
                 toDate = System.currentTimeMillis();
 
-            for (JsonMessage mes : data)
+            for (JsonMessage mes : history)
                 if (mes.getTimestamp() >= fromDate && mes.getTimestamp() <= toDate) {
                     System.out.println(mes);
                     count++;
@@ -152,35 +156,35 @@ public class UserInteface {
             Gson gson = new GsonBuilder().create();
             JsonMessage[] temp = gson.fromJson(reader, JsonMessage[].class);
             reader.close();
-            data.clear();
-            Collections.addAll(data, temp);
+            history.clear();
+            Collections.addAll(history, temp);
         }
 
-        System.out.println("load " + data.size() + " messages from " + fileaname);
-        write("load " + data.size() + " messages from " + fileaname);
+        System.out.println("load " + history.size() + " messages from " + fileaname);
+        write("load " + history.size() + " messages from " + fileaname);
     }
 
     public void saveMessage(String filename) throws IOException {
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(filename))) {
             Gson gson = new GsonBuilder().create();
-            gson.toJson(data, writer);
+            gson.toJson(history, writer);
 
             writer.close();
         }
 
-        System.out.println("save " + data.size() + " messages to " + filename);
-        write("save " + data.size() + " messages to " + filename);
+        System.out.println("save " + history.size() + " messages to " + filename);
+        write("save " + history.size() + " messages to " + filename);
     }
 
     public void addMessage(String author, String message) {
-        data.add(new JsonMessage(author, message));
+        history.add(new JsonMessage(author, message));
         write("add '" + message + "' message by " + author);
     }
 
     public void deleteMessage(String id) {
-        for (JsonMessage mes : data)
+        for (JsonMessage mes : history)
             if (mes.getId().equals(id)) {
-                data.remove(mes);
+                history.remove(mes);
                 break;
             }
 
@@ -189,7 +193,7 @@ public class UserInteface {
 
     public void searchMessagesbyAuthor(String author) {
         int count = 0;
-        for (JsonMessage mes : data)
+        for (JsonMessage mes : history)
             if (mes.getAuthor().equals(author)) {
                 System.out.println(mes);
                 count++;
@@ -200,7 +204,7 @@ public class UserInteface {
 
     public void searchMessagesbyKeyWord(String keyword) {
         int count = 0;
-        for (JsonMessage mes : data)
+        for (JsonMessage mes : history)
             if (mes.getMessage().toLowerCase().contains(keyword.toLowerCase())) {
                 System.out.println(mes);
                 count++;
@@ -211,7 +215,7 @@ public class UserInteface {
 
     public void searchMessagesbyRegExp(String regexp) {
         int count = 0;
-        for (JsonMessage mes : data)
+        for (JsonMessage mes : history)
             if (Pattern.matches(regexp, mes.getAuthor()) || Pattern.matches(regexp, mes.getId()) || Pattern.matches(regexp, mes.getMessage())) {
                 System.out.println(mes);
                 count++;
