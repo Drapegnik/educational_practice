@@ -1,0 +1,19 @@
+@media screen and (max-width: 600px) {
+    .content {
+        display: block;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .chat-block {
+        width: 100%;
+    }
+
+    #input {
+        position: relative;
+        margin-left: 20px;
+        left: 0;
+    }
+}

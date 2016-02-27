@@ -3,3 +3,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
+.inputgroup {
+    padding-top: 10px;
+}

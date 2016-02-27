@@ -1,0 +1,140 @@
+body {
+    font-family: Tahoma, Geneva, sans-serif;
+}
+
+.all {
+    background-color: ghostwhite;
+}
+
+.header {
+    background-color: #b8dcff;
+    border: 1px solid #b8dcff;
+    border-radius: 0 0 10px 10px;
+}
+
+.hed-inn {
+    display: inline-flex;
+    padding: 25px;
+    /*width: 100%;*/
+    width: 90%;
+}
+
+.status {
+    font-size: 20px;
+    align-self: flex-end;
+    padding-left: 10%;
+}
+
+.headline {
+    font-family: 'Open Sans Bold';
+    font-size: 35px;
+    line-height: 35px;
+}
+
+.footer {
+    font-size: x-large;
+    padding: 15px;
+    text-align: right;
+}
+
+.content {
+    display: flex;
+    padding: 20px;
+}
+
+.marg {
+    margin: 10px 5px 5px 0px;
+}
+
+.form-group {
+    display: inline-block;
+    line-height: 20px;
+    width: 30%;
+}
+
+.btn {
+    background-color: lightgreen;
+    border: 1px solid lightgreen;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.form-control {
+    line-height: 20px;
+    color: #555555;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+}
+
+.chat {
+    margin: 10px;
+    border: 2px solid grey;
+    background-color: snow;
+    border-radius: 4px;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.chat-block {
+    display: block;
+    width: 70%;
+}
+
+#input {
+    position: relative;
+    left: 70%;
+}
+
+#send {
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+    color: snow;
+}
+
+.in {
+    background-color: #bdeeff;
+    position: relative;
+    left: 2%;
+}
+
+.out {
+    position: relative;
+    left: 37%;
+    background-color: #ffe3ed;
+}
+
+.message {
+    display: flex;
+    font-size: 20px;
+    margin: 5px;
+    min-height: 100px;
+    width: 60%;
+    border: 1px solid gray;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.sign {
+    margin-bottom: 5px;
+    margin-right: 5px;
+    align-self: flex-end;
+}
+
+.text {
+    margin: 5px;
+    width: 80%;
+}
+
+.delete {
+    align-self: center;
+    color: grey;
+}
+
+li > a {
+    margin-left: 5px;
+    margin-top: 5px;
+    color: black;
+}
