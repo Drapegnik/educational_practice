@@ -16,4 +16,13 @@
         margin-left: 20px;
         left: 0;
     }
+
+    .status {
+        margin-left: 30%;
+    }
+
+    #sendarea {
+        margin-left: 5%;
+    }
+
 }

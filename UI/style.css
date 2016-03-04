@@ -1,14 +1,11 @@
-body {
-    font-family: Tahoma, Geneva, sans-serif;
-}
-
 .all {
-    background-color: ghostwhite;
+    background-color: #2b3e50;
+    color: #ebebeb;
 }
 
 .header {
-    background-color: #b8dcff;
-    border: 1px solid #b8dcff;
+    background-color: #df691a;
+    border: 1px solid #df691a;
     border-radius: 0 0 10px 10px;
 }
 
@@ -22,7 +19,12 @@ body {
 .status {
     font-size: 20px;
     align-self: flex-end;
-    padding-left: 10%;
+    padding: 3px;
+    margin-left: 70%;
+    color: black;
+    background-color: #ebebeb;
+    border: 1px solid black;
+    border-radius: 3px;
 }
 
 .headline {
@@ -48,24 +50,43 @@ body {
 
 .form-group {
     display: inline-block;
-    line-height: 20px;
+    line-height: 2px;
     width: 30%;
 }
 
 .btn {
-    background-color: lightgreen;
-    border: 1px solid lightgreen;
-    border-radius: 4px;
-    font-size: 14px;
+    color: #ebebeb;
+    background-color: #5cb85c;
+    border: 1px solid #5cb85c;
+    font-size: 20px;
     text-align: center;
     cursor: pointer;
+    padding-bottom: 6px;
 }
 
 .form-control {
-    line-height: 20px;
+    line-height: 26px;
     color: #555555;
     border: 1px solid #d3d3d3;
     border-radius: 4px;
+}
+
+.form-control::-webkit-input-placeholder {
+    padding-left: 5px;
+}
+
+#mes {
+    line-height: 30px;
+    font-size: 20px;
+    width: 300px;
+}
+
+#sendarea {
+    margin-left: 55%;
+}
+
+.control-label {
+    font-size: 20px;
 }
 
 .chat {
@@ -95,7 +116,7 @@ body {
 }
 
 .in {
-    background-color: #bdeeff;
+    background-color: #5bc0de;
     position: relative;
     left: 2%;
 }
@@ -103,7 +124,7 @@ body {
 .out {
     position: relative;
     left: 37%;
-    background-color: #ffe3ed;
+    background-color: #f0ad4e;
 }
 
 .message {
@@ -112,7 +133,7 @@ body {
     margin: 5px;
     min-height: 100px;
     width: 60%;
-    border: 1px solid gray;
+    border: 1px solid white;
     border-radius: 3px;
     text-align: center;
 }
@@ -121,6 +142,15 @@ body {
     margin-bottom: 5px;
     margin-right: 5px;
     align-self: flex-end;
+    color: #2b3e50;
+}
+
+.time {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-left: 3%;
+    align-self: flex-end;
+    color: #2b3e50;
 }
 
 .text {
@@ -137,4 +167,8 @@ li > a {
     margin-left: 5px;
     margin-top: 5px;
     color: black;
+}
+
+.holdcol::-webkit-input-placeholder {
+    color: #d9534f;
 }

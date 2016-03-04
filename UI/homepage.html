@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="responsive.css">
+    <script src="scripts.js"></script>
     <title>Chat</title>
 </head>
 <body class="all">
@@ -19,41 +20,22 @@
             <h1>Chat</h1>
         </div>
         <div class="status">
-            <span>server: <i style="color: orange" class="fa fa-exclamation-triangle"></i> / <i
-                    style="color: mediumseagreen" class="fa fa-check-circle"></i></span>
+            <span>server: <i style="color: #d9534f;" class="fa fa-exclamation-triangle"></i> / <i
+                    style="color: #5cb85c;" class="fa fa-check-circle"></i></span>
         </div>
     </div>
 </header>
 <section class="content">
-    <form class="form-group">
+    <div class="form-group">
         <label class="control-label marg" for="name">You name:</label>
-        <input class="form-control marg" id="name" type="text" value="User" placeholder="you name">
-        <button type="submit" class="btn marg">Submit</button>
-    </form>
+        <input onkeypress="enter(event)" class="form-control marg" id="name" type="text" value="User" placeholder="you name">
+        <button onclick="changeName()" class="btn marg">Submit</button>
+    </div>
 
     <div class="chat-block">
-        <ul class="chat">
-            <li class="message in">
-                <a href=""><i class="fa fa-trash"></i></a>
-                <a href=""><i class="fa fa-pencil"></i></a>
-                <div class="text">
-                    ololo
-                </div>
-                <p class="sign">user1</p>
-            </li>
-
-
+        <ul id="chat" class="chat">
             <li class="message out">
-                <a href=""><i class="fa fa-trash"></i></a>
-                <a href=""><i class="fa fa-pencil"></i></a>
-                <div class="text">
-                    sdfj sdfds ksl;dkfl;ds ksdfsd wewe sdsdf wewefd sdfsdfsd wefwefds sdfsdf werwe sdfsd wefwes sdf wef w ef
-                </div>
-                <p class="sign">user2</p>
-            </li>
-            <li class="message out">
-                <!--<div class="text">-->
-                <!--</div>-->
+                <p class="time">01:30:55</p>
                 <div class="text delete">
                     message was delete
                 </div>
@@ -61,10 +43,10 @@
             </li>
         </ul>
 
-        <form id="input" class="form-group">
-            <input class="form-control marg" id="mes" type="text" placeholder="say something">
-            <button id="send" type="submit" class="btn marg">Send</button>
-        </form>
+        <div id="sendarea">
+            <input onkeypress="enter(event)" class="form-control marg" type="text" id="mes"  placeholder="say something"/>
+            <button onclick="send()" class="btn marg">Send</button>
+        </div>
     </div>
 </section>
 <footer class="footer">

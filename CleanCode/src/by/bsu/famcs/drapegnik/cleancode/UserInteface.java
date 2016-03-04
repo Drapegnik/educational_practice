@@ -94,6 +94,7 @@ public class UserInteface {
             write("finish app");
             log.close();
         } catch (IOException ex) {
+            System.out.println("Some problems with File IO!");
             write("Some problems with File IO!");
         }
     }
