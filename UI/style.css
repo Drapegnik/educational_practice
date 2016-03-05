@@ -128,7 +128,7 @@
 }
 
 .message {
-    display: flex;
+    display: inline-flex;
     font-size: 20px;
     margin: 5px;
     min-height: 100px;
@@ -147,10 +147,11 @@
 
 .time {
     font-size: 15px;
-    margin-bottom: 5px;
-    margin-left: 3%;
+    margin-left: 4%;
     align-self: flex-end;
     color: #2b3e50;
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 
 .text {
@@ -171,4 +172,13 @@ li > a {
 
 .holdcol::-webkit-input-placeholder {
     color: #d9534f;
+}
+
+.editInput {
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    background-color: #5bc0de;
+    border: none;
+    width: 70%;
 }
