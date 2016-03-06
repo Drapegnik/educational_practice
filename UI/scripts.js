@@ -18,7 +18,7 @@ function changeName() {
         var nameContainer = document.getElementsByClassName("myname");
 
         for (var i = 0; i < nameContainer.length; i++)
-            nameContainer[i].innerHTML = name;
+            nameContainer[i].textContent = name;
     }
 }
 
@@ -33,8 +33,7 @@ function send() {
         var time = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
         var li = document.createElement("li");
         li.setAttribute("id", "id" + id);
-        li.classList.add("message");
-        li.classList.add("in");
+        li.classList.add("message", "in");
         li.innerHTML = "<a href='#' onclick='deleteMes(\"" + id + "\")'><i class='fa fa-trash'></i></a> " +
             "<a href='#' onclick='editMes(\"" + id + "\")'><i class='fa fa-pencil'></i></a>";
 
@@ -55,8 +54,7 @@ function send() {
 
         var p_sign = document.createElement("p");
         p_sign.textContent = name;
-        p_sign.classList.add("sign");
-        p_sign.classList.add("myname");
+        p_sign.classList.add("sign", "myname");
 
         var p_time = document.createElement("p");
         p_time.textContent = time;
@@ -79,6 +77,10 @@ function deleteMes(id) {
     var text = document.getElementById("text" + id);
     text.classList.add("delete");
     text.textContent = "message was delete";
+
+    var childs = document.getElementById("id" + id).childNodes;
+    childs[0].hidden = true;
+    childs[2].hidden = true;
 
     var time = document.getElementById("time" + id);
     time.textContent = "delete on " + new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
