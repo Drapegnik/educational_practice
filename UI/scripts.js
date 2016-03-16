@@ -8,17 +8,31 @@ var id = 0;
 function changeName() {
     var inputName = document.getElementById("name");
 
+    function swapUsers(mes, time, classRemove, classAdd, isHidden) {
+        mes.classList.remove(classRemove);
+        mes.classList.add(classAdd);
+        mes.childNodes[0].hidden = isHidden;
+        mes.childNodes[2].hidden = isHidden;
+        time.classList.remove(classRemove);
+        time.classList.add(classAdd);
+    }
+
     if (inputName.value.trim().length == 0) {
         inputName.setAttribute("placeholder", "name can't be blank");
         inputName.classList.add("holdcol");
     }
-    else {
-        name = inputName.value;
+    else if (name != inputName.value.trim()) {
+        name = inputName.value.trim();
 
-        var nameContainer = document.getElementsByClassName("myname");
+        var messages = document.getElementsByTagName("li");
+        var times = document.getElementsByClassName("time");
 
-        for (var i = 0; i < nameContainer.length; i++)
-            nameContainer[i].textContent = name;
+        for (var i = 0; i < messages.length; i++) {
+            if (messages[i].getElementsByClassName("myname")[0].textContent != name)
+                swapUsers(messages[i], times[i], "in", "out", true);
+            else
+                swapUsers(messages[i], times[i], "out", "in", false);
+        }
     }
 }
 
@@ -59,7 +73,7 @@ function send() {
         var p_time = document.createElement("p");
         p_time.textContent = time;
         p_time.setAttribute("id", "time" + id);
-        p_time.classList.add("time");
+        p_time.classList.add("time", "in");
 
         li.appendChild(input);
         li.appendChild(div);
