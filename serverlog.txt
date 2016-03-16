@@ -1,0 +1,8 @@
+16.03.2016-03:52:16 - Received new message from user: ololo
+16.03.2016-03:52:19 - Received new message from user: hi
+16.03.2016-03:52:20 - Received new message from user: ololo
+16.03.2016-03:52:23 - Received new message from user: how a u?
+16.03.2016-03:52:55 - Absent query in request
+16.03.2016-03:53:04 - Token query parameter is required
+16.03.2016-03:53:25 - An error occurred when dispatching request.
+16.03.2016-03:53:47 - Incorrect token in request: TN60EN. Server does not have so many messages

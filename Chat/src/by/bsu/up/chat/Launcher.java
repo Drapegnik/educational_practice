@@ -49,6 +49,8 @@ public class Launcher {
     }
 
     public static void launchServer(String[] args) {
+
+
         if (String.join(" ", args).matches("(-s)|(--server) -p [0-9]{1,5}")) {
             logger.info("Invalid command. Please see help");
         }
@@ -66,15 +68,17 @@ public class Launcher {
             logger.info(String.format("Get list of messages: " +
                     "GET http://%s:%d%s?token={token}", serverHost, port, Constants.CONTEXT_PATH));
             logger.info(String.format("Send message: " +
-                    "POST http://%s:%d%s provide body json in format {\"message\" : \"{message}\"}",
+                            "POST http://%s:%d%s provide body json in format {\"message\" : \"{message}\"}",
                     serverHost, port, Constants.CONTEXT_PATH));
 
             server.createContext(Constants.CONTEXT_PATH, new ServerHandler());
             server.setExecutor(Executors.newSingleThreadExecutor());
             server.start();
+
         } catch (IOException e) {
             logger.error("Could not launch server", e);
         }
+
     }
 
     public static void launchClient(String[] args) {

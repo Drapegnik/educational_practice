@@ -183,8 +183,6 @@ public class UserInteface {
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(filename))) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(history, writer);
-
-            writer.close();
         }
 
         System.out.println("save " + history.size() + " messages to " + filename);

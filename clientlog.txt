@@ -1,0 +1,5 @@
+16.03.2016-03:52:17 - Message from server: ololo
+16.03.2016-03:52:20 - Message from server: hi
+16.03.2016-03:52:21 - Message from server: ololo
+16.03.2016-03:52:24 - Message from server: how a u?
+16.03.2016-03:54:13 - Connection error. Disconnecting...

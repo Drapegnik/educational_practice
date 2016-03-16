@@ -58,22 +58,26 @@ public class ServerHandler implements HttpHandler {
     private Response doGet(HttpExchange httpExchange) {
         String query = httpExchange.getRequestURI().getQuery();
         if (query == null) {
+            logger.info("Absent query in request");
             return Response.badRequest("Absent query in request");
         }
         Map<String, String> map = queryToMap(query);
         String token = map.get(Constants.REQUEST_PARAM_TOKEN);
         if (StringUtils.isEmpty(token)) {
+            logger.info("Token query parameter is required");
             return Response.badRequest("Token query parameter is required");
         }
         try {
             int index = MessageHelper.parseToken(token);
             if (index > messageStorage.size()) {
+                logger.info(String.format("Incorrect token in request: %s. Server does not have so many messages", token));
                 return Response.badRequest(
                         String.format("Incorrect token in request: %s. Server does not have so many messages", token));
             }
             String responseBody = MessageHelper.buildServerResponseBody(messageStorage.subList(index, messageStorage.size()));
             return Response.ok(responseBody);
         } catch (InvalidTokenException e) {
+            logger.error("Could not parse token", e);
             return Response.badRequest(e.getMessage());
         }
     }
@@ -95,10 +99,10 @@ public class ServerHandler implements HttpHandler {
             byte[] bytes = response.getBody().getBytes();
 
             Headers headers = httpExchange.getResponseHeaders();
-            headers.add(Constants.REQUEST_HEADER_ACCESS_CONTROL,"*");
+            headers.add(Constants.REQUEST_HEADER_ACCESS_CONTROL, "*");
             httpExchange.sendResponseHeaders(response.getStatusCode(), bytes.length);
 
-            os.write( bytes);
+            os.write(bytes);
             // there is no need to close stream manually
             // as try-catch with auto-closable is used
             /**
@@ -128,7 +132,8 @@ public class ServerHandler implements HttpHandler {
      * {@link ServerHandler#queryToMap(String)} one, but uses
      * Java's 8 Stream API and lambda expressions
      * <p>
-     *     It's just as an example. Bu you can use it
+     * It's just as an example. Bu you can use it
+     *
      * @param query the query to be parsed
      * @return the map, containing parsed key-value pairs from request
      */
