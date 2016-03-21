@@ -1,24 +1,20 @@
 package by.bsu.famcs.drapegnik.cleancode;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.io.*;
 import java.text.*;
 import java.util.*;
-import java.util.regex.Pattern;
 
 
 /**
  * Created by Drapegnik on 15.02.16.
  */
 public class UserInteface {
-    private static List<JsonMessage> history;
+    private static History history;
     private static FileWriter log;
 
     public void startApp() {
         try {
-            history = new ArrayList<>();
+            history = new History();
             log = new FileWriter("logfile.txt");
             write("start app");
 
@@ -42,38 +38,42 @@ public class UserInteface {
                 try {
                     switch (command) {
                         case "load":
-                            loadMessage(firstParam);
+                            history.loadMessage(firstParam);
                             break;
 
                         case "save":
-                            saveMessage(firstParam);
+                            history.saveMessage(firstParam);
                             break;
 
                         case "show": {
                             if (!secondParam.isEmpty()) {
-                                showMessages(firstParam, secondParam);
+                                history.showMessages(firstParam, secondParam);
                             } else if (!firstParam.isEmpty()) {
-                                showMessages(firstParam, "");
+                                history.showMessages(firstParam, "");
                             } else {
-                                showMessages();
+                                history.showMessages();
                             }
                             break;
                         }
 
                         case "delete":
-                            deleteMessage(firstParam);
+                            history.deleteMessage(firstParam);
                             break;
 
                         case "searchA":
-                            searchMessagesByAuthor(firstParam);
+                            history.searchMessagesByAuthor(firstParam);
                             break;
 
                         case "searchK":
-                            searchMessagesByKeyWord(firstParam);
+                            history.searchMessagesByKeyWord(firstParam);
                             break;
 
                         case "searchR":
-                            searchMessagesByRegExp(firstParam);
+                            history.searchMessagesByRegExp(firstParam);
+                            break;
+
+                        case "add":
+                            history.addMessage(firstParam, secondParam);
                             break;
 
                         case "q":
@@ -111,133 +111,28 @@ public class UserInteface {
     }
 
     private void test() throws IOException {
-        loadMessage("input.json");
-        saveMessage("output.json");
-        addMessage("ivan", "lol");
-        showMessages();
-        addMessage("ivan", "Are you ok? lol");
-        searchMessagesByAuthor("User1");
-        searchMessagesByKeyWord("Are");
-        searchMessagesByRegExp("^User\\w*");
-        showMessages("15.02.2015-15:04", "15.02.2016-15:04");
-        deleteMessage("46f408b2-72cb-4307-b6e6-95a8515eb7c0");
+        history.loadMessage("input.json");
+        history.saveMessage("output.json");
+        history.addMessage("ivan", "lol");
+        history.showMessages();
+        history.addMessage("ivan", "Are you ok? lol");
+        history.searchMessagesByAuthor("User1");
+        history.searchMessagesByKeyWord("Are");
+        history.searchMessagesByRegExp("^User\\w*");
+        history.showMessages("15.02.2015-15:04", "15.02.2016-15:04");
+        history.deleteMessage("46f408b2-72cb-4307-b6e6-95a8515eb7c0");
     }
 
     private String[] readCommand(Scanner sc) {
         return sc.nextLine().split("\\s+");
     }
 
-    private void write(String message) {
+    protected static void write(String message) {
         DateFormat df = new SimpleDateFormat("dd.MM.yyyy-hh:mm:ss");
         try {
             log.write(df.format(new Date(System.currentTimeMillis())) + " - " + message + "\n");
         } catch (IOException ex) {
             System.out.println("Some problems with logfile!");
         }
-    }
-
-    public void showMessages() {
-        history.forEach((mes) -> System.out.println(mes));
-        write("show " + history.size() + " messages");
-    }
-
-    public void showMessages(String dateFrom, String dateTo) {
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy-hh:mm");
-        try {
-            int count = 0;
-            long from = df.parse(dateFrom).getTime();
-            long to;
-
-            if (!dateTo.isEmpty())
-                to = df.parse(dateTo).getTime();
-            else
-                to = System.currentTimeMillis();
-
-            for (JsonMessage mes : history)
-                if (mes.getTimestamp() >= from && mes.getTimestamp() <= to) {
-                    System.out.println(mes);
-                    count++;
-                }
-
-            write("show " + count + " messages by period from " + df.format(from) + " to " + df.format(to));
-        } catch (ParseException ex) {
-            System.out.println("Some problems with parse date, try again!");
-            write("Some problems with parse date in showMessages by period");
-        }
-    }
-
-    public void loadMessage(String fileaname) throws IOException {
-        try (Reader reader = new InputStreamReader(new FileInputStream(fileaname))) {
-            Gson gson = new GsonBuilder().create();
-            JsonMessage[] temp = gson.fromJson(reader, JsonMessage[].class);
-            reader.close();
-            history.clear();
-            Collections.addAll(history, temp);
-        }
-
-        System.out.println("load " + history.size() + " messages from " + fileaname);
-        write("load " + history.size() + " messages from " + fileaname);
-    }
-
-    public void saveMessage(String filename) throws IOException {
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(filename))) {
-            Gson gson = new GsonBuilder().create();
-            gson.toJson(history, writer);
-        }
-
-        System.out.println("save " + history.size() + " messages to " + filename);
-        write("save " + history.size() + " messages to " + filename);
-    }
-
-    public void addMessage(String author, String message) {
-        history.add(new JsonMessage(author, message));
-        write("add '" + message + "' message by " + author);
-    }
-
-    public void deleteMessage(String id) {
-        for (JsonMessage mes : history) {
-            if (mes.getId().equals(id)) {
-                history.remove(mes);
-                break;
-            }
-        }
-
-        write("delete message by id=" + id);
-    }
-
-    public void searchMessagesByAuthor(String author) {
-        int count = 0;
-        for (JsonMessage mes : history) {
-            if (mes.getAuthor().equals(author)) {
-                System.out.println(mes);
-                count++;
-            }
-        }
-
-        write("find " + count + " messages by " + author);
-    }
-
-    public void searchMessagesByKeyWord(String keyword) {
-        int count = 0;
-        for (JsonMessage mes : history) {
-            if (mes.getMessage().toLowerCase().contains(keyword.toLowerCase())) {
-                System.out.println(mes);
-                count++;
-            }
-        }
-
-        write("find " + count + " messages by '" + keyword + "' keyword");
-    }
-
-    public void searchMessagesByRegExp(String regexp) {
-        int count = 0;
-        for (JsonMessage mes : history) {
-            if (Pattern.matches(regexp, mes.getAuthor()) || Pattern.matches(regexp, mes.getId()) || Pattern.matches(regexp, mes.getMessage())) {
-                System.out.println(mes);
-                count++;
-            }
-        }
-
-        write("find " + count + " messages by '" + regexp + "' regexp");
     }
 }
