@@ -2,7 +2,7 @@
  * Created by Drapegnik on 03.03.16.
  */
 
-var name = "";
+var name = "User";
 var id = 0;
 
 var messageList = [];
@@ -11,10 +11,10 @@ function run() {
     messageList = loadMessages() || [
             newMes('Hi')
         ];
-    id = messageList[messageList.length - 1].id;
+    id = messageList.length;
     name = loadUsername() || "User";
     document.getElementById("name").value = name;
-    render(messageList);
+    render(messageList, true);
 }
 
 function changeName() {
@@ -61,7 +61,7 @@ function send() {
     }
     else {
         messageList.push(newMes(message.value));
-        render(messageList);
+        render(messageList, true);
     }
     message.value = "";
 }
@@ -69,7 +69,7 @@ function send() {
 function deleteMes(id) {
     messageList[id - 1].isDelete = true;
     messageList[id - 1].time = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-    render(messageList);
+    render(messageList, false);
 
 }
 
@@ -98,7 +98,7 @@ function saveMes(inputId) {
         input.hidden = true;
         input.nextElementSibling.firstElementChild.hidden = true;
 
-        render(messageList);
+        render(messageList, false);
     }
 }
 
@@ -109,7 +109,7 @@ function cancelMes(inputId) {
     input.hidden = true;
     input.nextElementSibling.firstElementChild.hidden = true;
 
-    render(messageList);
+    render(messageList, false);
 }
 
 function enter(e) {
@@ -128,11 +128,12 @@ document.onkeydown = function (e) {
             cancelMes(e.srcElement.id);
 };
 
-function render(messages) {
+function render(messages, isRelocate) {
     document.getElementById("chat").innerHTML = "";
     for (var i = 0; i < messages.length; i++)
         renderMes(messages[i]);
-    document.location.href = "#id" + id;
+    if (isRelocate)
+        document.location.href = "#id" + id;
     saveMessages(messages);
 }
 
