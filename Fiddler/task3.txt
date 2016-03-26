@@ -1,0 +1,71 @@
+GET http://10.160.21.232:8080/chat?token=TN11EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 08:35:25 GMT
+Access-control-allow-origin: *
+Content-length: 51
+
+{"messages":["hi","lollol","kek"],"token":"TN35EN"}
+
+------------------------------------------------------------------
+
+POST http://10.160.21.232:8080/chat HTTP/1.1
+User-Agent: Composer
+Content-Type: application/json; charset=utf-8
+Host: 10.160.21.232:8080
+Content-Length: 27
+
+={"message":"from fiddler"}
+HTTP/1.1 400 Bad Request
+Date: Sat, 26 Mar 2016 08:37:03 GMT
+Access-control-allow-origin: *
+Content-length: 22
+
+Incorrect request body
+
+------------------------------------------------------------------
+
+POST http://10.160.21.232:8080/chat HTTP/1.1
+User-Agent: Composer
+Content-Type: application/json; charset=utf-8
+Host: 10.160.21.232:8080
+Content-Length: 26
+
+{"message":"from fiddler"}
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 08:37:22 GMT
+Transfer-encoding: chunked
+Access-control-allow-origin: *
+
+0
+
+
+
+------------------------------------------------------------------
+
+POST http://10.160.21.232:8080/chat HTTP/1.1
+User-Agent: Composer
+Content-Type: application/json; charset=utf-8
+Host: 10.160.21.232:8080
+Content-Length: 32
+
+{"message":"from fiddler again"}
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 08:37:52 GMT
+Transfer-encoding: chunked
+Access-control-allow-origin: *
+
+0
+
+
+
+------------------------------------------------------------------

@@ -1,0 +1,74 @@
+GET http://10.160.21.232:8080/chat?token=TN11EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 07:40:48 GMT
+Access-control-allow-origin: *
+Content-length: 48
+
+{"messages":["hi","lol","kek"],"token":"TN35EN"}
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat HTTP/1.1
+User-Agent: Composer
+Host: 10.160.21.232:8080
+
+
+HTTP/1.1 400 Bad Request
+Date: Sat, 26 Mar 2016 07:44:28 GMT
+Access-control-allow-origin: *
+Content-length: 23
+
+Absent query in request
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat HTTP/2.0
+User-Agent: Composer
+Host: 10.160.21.232:8080
+
+
+HTTP/1.1 400 Bad Request
+Date: Sat, 26 Mar 2016 07:46:53 GMT
+Access-control-allow-origin: *
+Content-length: 23
+
+Absent query in request
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat/?token=TN40EN HTTP/2.0
+User-Agent: Composer
+Host: 10.160.21.232:8080
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 07:49:44 GMT
+Access-control-allow-origin: *
+Content-length: 32
+
+{"messages":[],"token":"TN35EN"}
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat/?token=TN30EN HTTP/2.0
+User-Agent: Composer
+Host: 10.160.21.232:8080
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 07:51:32 GMT
+Access-control-allow-origin: *
+Content-length: 37
+
+{"messages":["kek"],"token":"TN35EN"}
+
+------------------------------------------------------------------

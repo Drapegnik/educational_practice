@@ -1,0 +1,190 @@
+GET http://10.160.21.232:8080/chat HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 400 Bad Request
+Date: Sat, 26 Mar 2016 07:28:39 GMT
+Access-control-allow-origin: *
+Content-length: 23
+
+Absent query in request
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 400 Bad Request
+Date: Sat, 26 Mar 2016 07:28:57 GMT
+Access-control-allow-origin: *
+Content-length: 33
+
+Token query parameter is required
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token=TK11EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 400 Bad Request
+Date: Sat, 26 Mar 2016 07:32:50 GMT
+Access-control-allow-origin: *
+Content-length: 25
+
+Incorrect format of token
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token=TK11EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Cache-Control: max-age=0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 400 Bad Request
+Date: Sat, 26 Mar 2016 07:33:04 GMT
+Access-control-allow-origin: *
+Content-length: 25
+
+Incorrect format of token
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token=TN11EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 07:33:27 GMT
+Access-control-allow-origin: *
+Content-length: 56
+
+{"messages":["hi","lol","kek","lokek"],"token":"TN43EN"}
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token=TN20EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 07:33:38 GMT
+Access-control-allow-origin: *
+Content-length: 51
+
+{"messages":["lol","kek","lokek"],"token":"TN43EN"}
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token=TN30EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 07:33:42 GMT
+Access-control-allow-origin: *
+Content-length: 45
+
+{"messages":["kek","lokek"],"token":"TN43EN"}
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token=TN40EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 07:33:46 GMT
+Access-control-allow-origin: *
+Content-length: 39
+
+{"messages":["lokek"],"token":"TN43EN"}
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token=TN50EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 200 OK
+Date: Sat, 26 Mar 2016 07:33:48 GMT
+Access-control-allow-origin: *
+Content-length: 32
+
+{"messages":[],"token":"TN43EN"}
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8080/chat?token=TN60EN HTTP/1.1
+Host: 10.160.21.232:8080
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,be;q=0.2
+
+
+HTTP/1.1 400 Bad Request
+Date: Sat, 26 Mar 2016 07:33:52 GMT
+Access-control-allow-origin: *
+Content-length: 73
+
+Incorrect token in request: TN60EN. Server does not have so many messages
+
+------------------------------------------------------------------

@@ -6,3 +6,41 @@
 16.03.2016-03:53:04 - Token query parameter is required
 16.03.2016-03:53:25 - An error occurred when dispatching request.
 16.03.2016-03:53:47 - Incorrect token in request: TN60EN. Server does not have so many messages
+26.03.2016-10:28:39 - Absent query in request
+26.03.2016-10:28:57 - Token query parameter is required
+26.03.2016-10:31:30 - Received new message from user: dfgdfgdfb
+26.03.2016-10:31:40 - Received new message from user: sosi
+26.03.2016-10:31:45 - Received new message from user: ppidr
+26.03.2016-10:32:04 - Received new message from user: hi
+26.03.2016-10:32:07 - Received new message from user: lol
+26.03.2016-10:32:10 - Received new message from user: kek
+26.03.2016-10:32:13 - Received new message from user: lokek
+26.03.2016-10:32:50 - Could not parse token
+26.03.2016-10:33:04 - Could not parse token
+26.03.2016-10:33:52 - Incorrect token in request: TN60EN. Server does not have so many messages
+26.03.2016-10:40:32 - Received new message from user: hi
+26.03.2016-10:40:35 - Received new message from user: lol
+26.03.2016-10:40:37 - Received new message from user: kek
+26.03.2016-10:44:28 - Absent query in request
+26.03.2016-10:46:53 - Absent query in request
+26.03.2016-10:57:15 - Received new message from user: hi
+26.03.2016-10:57:17 - Received new message from user: ololo
+26.03.2016-10:57:23 - Received new message from user: azazaazaaa
+26.03.2016-10:57:25 - Received new message from user: kek
+26.03.2016-10:58:56 - Could not parse message.
+26.03.2016-11:01:08 - Could not parse message.
+26.03.2016-11:17:19 - Received new message from user: hi
+26.03.2016-11:17:21 - Received new message from user: lol
+26.03.2016-11:17:23 - Received new message from user: kek
+26.03.2016-11:17:25 - Received new message from user: ololo
+26.03.2016-11:30:22 - Could not parse message.
+26.03.2016-11:31:05 - Could not parse message.
+26.03.2016-11:31:09 - Could not parse message.
+26.03.2016-11:33:57 - Received new message from user: from fiddler
+26.03.2016-11:34:00 - Could not parse message.
+26.03.2016-11:35:08 - Received new message from user: hi
+26.03.2016-11:35:11 - Received new message from user: lollol
+26.03.2016-11:35:12 - Received new message from user: kek
+26.03.2016-11:37:03 - Could not parse message.
+26.03.2016-11:37:22 - Received new message from user: from fiddler
+26.03.2016-11:37:52 - Received new message from user: from fiddler again
