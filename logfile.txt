@@ -1,14 +1,15 @@
-21.03.2016-09:41:27 - start app
-21.03.2016-09:41:27 - load 3 messages from input.json
-21.03.2016-09:41:27 - save 3 messages to output.json
-21.03.2016-09:41:27 - add 'lol' message by ivan
-21.03.2016-09:41:27 - show 4 messages
-21.03.2016-09:41:27 - add 'Are you ok? lol' message by ivan
-21.03.2016-09:41:27 - find 2 messages by User1
-21.03.2016-09:41:27 - find 2 messages by 'Are' keyword
-21.03.2016-09:41:27 - find 3 messages by '^User\w*' regexp
-21.03.2016-09:41:27 - show 3 messages by period from 15.02.2015-03:04 to 15.02.2016-03:04
-21.03.2016-09:41:27 - delete message by id=46f408b2-72cb-4307-b6e6-95a8515eb7c0
-21.03.2016-09:41:37 - add '"ivan"' message by "kek"
-21.03.2016-09:41:40 - show 5 messages
-21.03.2016-10:09:54 - finish app
+28.03.2016-11:19:42 - start app
+28.03.2016-11:19:42 - load 3 messages from input.json
+28.03.2016-11:19:42 - save 3 messages to output.json
+28.03.2016-11:19:42 - add 'lol' message by ivan
+28.03.2016-11:19:42 - show 4 messages
+28.03.2016-11:19:42 - add 'Are you ok? lol' message by ivan
+28.03.2016-11:19:42 - find 2 messages by User1
+28.03.2016-11:19:42 - find 2 messages by 'Are' keyword
+28.03.2016-11:19:42 - find 3 messages by '^User\w*' regexp
+28.03.2016-11:19:42 - show 3 messages by period from 15.02.2015-03:04 to 15.02.2016-03:04
+28.03.2016-11:19:42 - delete message by id=46f408b2-72cb-4307-b6e6-95a8515eb7c0
+28.03.2016-11:19:44 - Incorrect regexp '^User[123'
+28.03.2016-11:19:44 - find 0 messages by '^User[123' regexp
+28.03.2016-11:20:05 - find 2 messages by '^User\w*' regexp
+28.03.2016-11:20:07 - finish app
