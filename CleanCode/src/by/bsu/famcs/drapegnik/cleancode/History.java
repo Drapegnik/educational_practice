@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Created by Drapegnik on 23.02.16.
@@ -119,9 +120,15 @@ public class History {
     public void searchMessagesByRegExp(String regexp) {
         int count = 0;
         for (JsonMessage mes : history) {
-            if (Pattern.matches(regexp, mes.getAuthor()) || Pattern.matches(regexp, mes.getId()) || Pattern.matches(regexp, mes.getMessage())) {
-                System.out.println(mes);
-                count++;
+            try {
+                if (Pattern.matches(regexp, mes.getAuthor()) || Pattern.matches(regexp, mes.getId()) || Pattern.matches(regexp, mes.getMessage())) {
+                    System.out.println(mes);
+                    count++;
+                }
+            } catch (PatternSyntaxException ex) {
+                System.out.println("Incorrect regexp! Try again.");
+                UserInteface.write("Incorrect regexp '" + regexp + "'");
+                break;
             }
         }
 
