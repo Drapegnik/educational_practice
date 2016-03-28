@@ -80,6 +80,7 @@ function editMes(id) {
     var input = document.getElementById("input" + id);
     input.setAttribute("value", text.textContent);
     input.hidden = false;
+    input.focus();
     document.getElementById("id" + id).getElementsByTagName("a")[2].hidden = false;
 
 }
