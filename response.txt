@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Date: Tue, 29 Mar 2016 11:13:31 GMT
+Access-control-allow-origin: *
+Content-length: 92
+
+{"messages":["hi","lollol","kek"],"token":"TN35EN"}

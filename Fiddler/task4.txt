@@ -1,0 +1,34 @@
+GET http://10.160.21.232:8888/chat?token=TN11EN HTTP/1.1
+Host: 10.160.21.232:8888
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4
+
+
+HTTP/1.1 200 OK
+Date: Mon, 28 Mar 2016 16:05:37 GMT
+Access-control-allow-origin: *
+Content-length: 51
+
+{"messages":["hi","lollol","kek"],"token":"TN35EN"}
+
+------------------------------------------------------------------
+
+GET http://10.160.21.232:8888/chat?token=TN11EN HTTP/1.1
+User-Agent: Java/1.8.0_65
+Host: 10.160.21.232:8888
+Accept: text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2
+Connection: keep-alive
+
+
+HTTP/1.1 200 OK
+Date: Mon, 28 Mar 2016 16:05:37 GMT
+Access-control-allow-origin: *
+Content-length: 51
+
+{"messages":["hi","lollol","kek"],"token":"TN35EN"}
+
+------------------------------------------------------------------

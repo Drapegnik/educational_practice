@@ -38,3 +38,10 @@
 26.03.2016-11:45:41 - Connection error. Disconnecting...
 26.03.2016-11:47:16 - Could not parse message
 28.03.2016-01:56:22 - Connection error. Disconnecting...
+28.03.2016-11:35:41 - Message from server: hi
+28.03.2016-11:35:49 - Message from server: h a u
+28.03.2016-11:35:53 - Message from server: sdkdsfk;lkl;fdsfkd;lskl;dfsfdkl;sdfkdfskl;kl;dfs
+28.03.2016-11:59:47 - Connection error. Disconnecting...
+29.03.2016-02:12:03 - Message from server: hi
+29.03.2016-02:12:05 - Message from server: lollol
+29.03.2016-02:12:07 - Message from server: kek

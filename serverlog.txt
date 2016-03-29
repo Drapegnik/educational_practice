@@ -44,3 +44,13 @@
 26.03.2016-11:37:03 - Could not parse message.
 26.03.2016-11:37:22 - Received new message from user: from fiddler
 26.03.2016-11:37:52 - Received new message from user: from fiddler again
+28.03.2016-11:35:40 - Received new message from user: hi
+28.03.2016-11:35:48 - Received new message from user: h a u
+28.03.2016-11:35:52 - Received new message from user: sdkdsfk;lkl;fdsfkd;lskl;dfsfdkl;sdfkdfskl;kl;dfs
+28.03.2016-11:36:05 - Absent query in request
+29.03.2016-02:12:03 - Received new message from user: hi
+29.03.2016-02:12:04 - Received new message from user: lollol
+29.03.2016-02:12:07 - Received new message from user: kek
+29.03.2016-02:12:15 - Token query parameter is required
+29.03.2016-02:13:03 - Absent query in request
+29.03.2016-02:41:37 - Token query parameter is required
