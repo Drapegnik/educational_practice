@@ -19,7 +19,8 @@ public class LoaderSaver {
             Gson gson = new GsonBuilder().create();
             Message[] temp = gson.fromJson(reader, Message[].class);
             reader.close();
-            Collections.addAll(data, temp);
+            if (temp != null)
+                Collections.addAll(data, temp);
         }
         return data;
     }

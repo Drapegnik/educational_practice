@@ -31,16 +31,17 @@ public class MessageHelper {
      * Builds token based on amount of messages, which are
      * already stored on server side or client side.
      * <p>
-     *     E.g. Client has 5 messages. It does not want to
-     *     retrieve messages it already has. So, client
-     *     passes 5 as argument to this method, and this method
-     *     will return a token, which says to server: Just give
-     *     me all messages, but skip first 5.
-     *
+     * E.g. Client has 5 messages. It does not want to
+     * retrieve messages it already has. So, client
+     * passes 5 as argument to this method, and this method
+     * will return a token, which says to server: Just give
+     * me all messages, but skip first 5.
      * <p>
-     *     On the other hand, server passes amount of messages it has
-     *     (size of messages collection). So, client can parse
-     *     token and understand how many messages are on server side
+     * <p>
+     * On the other hand, server passes amount of messages it has
+     * (size of messages collection). So, client can parse
+     * token and understand how many messages are on server side
+     *
      * @param receivedMessagesCount amount of messages to skip.
      * @return generated token
      */
@@ -51,6 +52,7 @@ public class MessageHelper {
 
     /**
      * Parses token and extract encoded amount of messages (typically - index)
+     *
      * @param token the token to be parsed
      * @return decoded amount messages (index)
      */
@@ -111,18 +113,30 @@ public class MessageHelper {
         return jsonObject.toJSONString();
     }
 
-    public static Message getClientMessage(InputStream inputStream) throws ParseException {
+    public static Message getClientMessage(InputStream inputStream, boolean isPOST) throws ParseException {
         JSONObject jsonObject = stringToJsonObject(inputStreamToString(inputStream));
         String id = ((String) jsonObject.get(Constants.Message.FIELD_ID));
-        String author = ((String) jsonObject.get(Constants.Message.FIELD_AUTHOR));
-        long timestamp = ((long) jsonObject.get(Constants.Message.FIELD_TIMESTAMP));
         String text = ((String) jsonObject.get(Constants.Message.FIELD_TEXT));
         Message message = new Message();
         message.setId(id);
-        message.setAuthor(author);
-        message.setTimestamp(timestamp);
         message.setText(text);
+        if (isPOST) {
+            String author = ((String) jsonObject.get(Constants.Message.FIELD_AUTHOR));
+            long timestamp = ((long) jsonObject.get(Constants.Message.FIELD_TIMESTAMP));
+            boolean isDelete = ((boolean) jsonObject.get(Constants.Message.FIELD_DELETE));
+            boolean isEdit = ((boolean) jsonObject.get(Constants.Message.FIELD_EDIT));
+            message.setAuthor(author);
+            message.setTimestamp(timestamp);
+            message.setDelete(isDelete);
+            message.setEdit(isEdit);
+        }
         return message;
+    }
+
+    public static String getDeleteParam(InputStream inputStream) throws ParseException {
+        JSONObject jsonObject = stringToJsonObject(inputStreamToString(inputStream));
+        String id = ((String) jsonObject.get(Constants.Message.FIELD_ID));
+        return id;
     }
 
     public static JSONObject stringToJsonObject(String json) throws ParseException {
@@ -150,6 +164,8 @@ public class MessageHelper {
         jsonObject.put(Constants.Message.FIELD_AUTHOR, message.getAuthor());
         jsonObject.put(Constants.Message.FIELD_TIMESTAMP, message.getTimestamp());
         jsonObject.put(Constants.Message.FIELD_TEXT, message.getText());
+        jsonObject.put(Constants.Message.FIELD_DELETE, message.isDelete());
+        jsonObject.put(Constants.Message.FIELD_EDIT, message.isEdit());
         return jsonObject;
     }
 }

@@ -112,7 +112,6 @@ public class UserInteface {
 
     private void test() throws IOException {
         history.loadMessage("input.json");
-        history.saveMessage("output.json");
         history.addMessage("ivan", "lol");
         history.showMessages();
         history.addMessage("ivan", "Are you ok? lol");
@@ -121,6 +120,7 @@ public class UserInteface {
         history.searchMessagesByRegExp("^User\\w*");
         history.showMessages("15.02.2015-15:04", "15.02.2016-15:04");
         history.deleteMessage("46f408b2-72cb-4307-b6e6-95a8515eb7c0");
+        history.saveMessage("output.json");
     }
 
     private String[] readCommand(Scanner sc) {

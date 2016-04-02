@@ -1,13 +1,12 @@
-02.04.2016-07:02:04 - start app
-02.04.2016-07:02:04 - load 3 messages from input.json
-02.04.2016-07:02:04 - save 3 messages to output.json
-02.04.2016-07:02:04 - add 'lol' message by ivan
-02.04.2016-07:02:04 - show 4 messages
-02.04.2016-07:02:04 - add 'Are you ok? lol' message by ivan
-02.04.2016-07:02:04 - find 2 messages by User1
-02.04.2016-07:02:04 - find 2 messages by 'Are' keyword
-02.04.2016-07:02:04 - find 3 messages by '^User\w*' regexp
-02.04.2016-07:02:04 - show 3 messages by period from 15.02.2015-03:04 to 15.02.2016-03:04
-02.04.2016-07:02:04 - delete message by id=46f408b2-72cb-4307-b6e6-95a8515eb7c0
-02.04.2016-07:02:07 - unknown command 'й'
-02.04.2016-07:02:10 - finish app
+02.04.2016-07:59:58 - start app
+02.04.2016-07:59:58 - load 3 messages from input.json
+02.04.2016-07:59:58 - add 'lol' message by ivan
+02.04.2016-07:59:58 - show 4 messages
+02.04.2016-07:59:58 - add 'Are you ok? lol' message by ivan
+02.04.2016-07:59:58 - find 2 messages by User1
+02.04.2016-07:59:58 - find 2 messages by 'Are' keyword
+02.04.2016-07:59:58 - find 3 messages by '^User\w*' regexp
+02.04.2016-07:59:58 - show 3 messages by period from 15.02.2015-03:04 to 15.02.2016-03:04
+02.04.2016-07:59:58 - delete message by id=46f408b2-72cb-4307-b6e6-95a8515eb7c0
+02.04.2016-07:59:58 - save 4 messages to output.json
+02.04.2016-08:00:00 - finish app

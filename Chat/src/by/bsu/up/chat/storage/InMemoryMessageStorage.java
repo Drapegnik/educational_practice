@@ -3,10 +3,12 @@ package by.bsu.up.chat.storage;
 import by.bsu.up.chat.common.models.Message;
 import by.bsu.up.chat.logging.Logger;
 import by.bsu.up.chat.logging.impl.Log;
+import by.bsu.famcs.drapegnik.cleancode.LoaderSaver;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class InMemoryMessageStorage implements MessageStorage {
 
@@ -37,12 +39,45 @@ public class InMemoryMessageStorage implements MessageStorage {
 
     @Override
     public boolean updateMessage(Message message) {
-        throw new UnsupportedOperationException("Update for messages is not supported yet");
+        for (Message mes : messages)
+            if (mes.getId().equals(message.getId()) && !mes.isDelete()) {
+                mes.setEdit(true);
+                mes.setText(message.getText());
+                mes.setTimestamp(System.currentTimeMillis());
+                return true;
+            }
+        return false;
     }
 
     @Override
     public synchronized boolean removeMessage(String messageId) {
-        throw new UnsupportedOperationException("Removing of messages is not supported yet");
+        for (Message mes : messages)
+            if (mes.getId().equals(messageId) && !mes.isDelete()) {
+                mes.setDelete(true);
+                mes.setEdit(false);
+                mes.setText("Message was delete");
+                mes.setTimestamp(System.currentTimeMillis());
+                return true;
+            }
+        return false;
+    }
+
+    @Override
+    public void saveMessages() {
+        try {
+            LoaderSaver.saveMessage("history.json", messages);
+        } catch (IOException ex) {
+            logger.error("Problem with saving history in file", ex);
+        }
+    }
+
+    @Override
+    public void loadMessages() {
+        try {
+            messages = LoaderSaver.loadMessage("history.json");
+        } catch (IOException ex) {
+            logger.error("Problem with loading history from file", ex);
+        }
     }
 
     @Override
