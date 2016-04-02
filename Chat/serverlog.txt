@@ -54,3 +54,7 @@
 29.03.2016-02:12:15 - Token query parameter is required
 29.03.2016-02:13:03 - Absent query in request
 29.03.2016-02:41:37 - Token query parameter is required
+02.04.2016-05:09:27 - Token query parameter is required
+02.04.2016-05:13:28 - Received new message from user: Message{id='2', author='User 2', timestamp=1459169330000, text='What’s up ?'}
+02.04.2016-05:13:55 - Received new message from user: Message{id='1', author='User1', timestamp=1459169330000, text='Hello, all!'}
+02.04.2016-05:14:07 - Received new message from user: Message{id='1', author='User2', timestamp=1459169330000, text='OLOLOLOLO'}

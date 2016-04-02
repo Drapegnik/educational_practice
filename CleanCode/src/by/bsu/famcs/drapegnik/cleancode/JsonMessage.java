@@ -10,19 +10,19 @@ public class JsonMessage {
     private UUID id;
     private String author;
     private long timestamp;
-    private String message;
+    private String text;
 
     public JsonMessage() {
         this.author = "none";
         this.timestamp = System.currentTimeMillis();
-        this.message = "none";
+        this.text = "none";
         this.id = UUID.randomUUID();
     }
 
-    public JsonMessage(String author, String message) {
+    public JsonMessage(String author, String text) {
         this.author = author;
         this.timestamp = System.currentTimeMillis();
-        this.message = message;
+        this.text = text;
         this.id = UUID.randomUUID();
     }
 
@@ -42,7 +42,7 @@ public class JsonMessage {
 
 
     public String getMessage() {
-        return message;
+        return text;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class JsonMessage {
                 "'id':'" + id + '\'' +
                 ", 'author':'" + author + '\'' +
                 ", 'timestamp':'" + timestamp + '\'' +
-                ", 'message':'" + message + '\'' +
+                ", 'text':'" + text + '\'' +
                 '}';
     }
 }

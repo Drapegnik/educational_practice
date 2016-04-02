@@ -54,25 +54,14 @@ public class History {
         }
     }
 
-    public void loadMessage(String fileaname) throws IOException {
-        try (Reader reader = new InputStreamReader(new FileInputStream(fileaname))) {
-            Gson gson = new GsonBuilder().create();
-            JsonMessage[] temp = gson.fromJson(reader, JsonMessage[].class);
-            reader.close();
-            history.clear();
-            Collections.addAll(history, temp);
-        }
-
-        System.out.println("load " + history.size() + " messages from " + fileaname);
-        UserInteface.write("load " + history.size() + " messages from " + fileaname);
+    public void loadMessage(String filename) throws IOException {
+        history = LoaderSaver.loadMessage(filename);
+        System.out.println("load " + history.size() + " messages from " + filename);
+        UserInteface.write("load " + history.size() + " messages from " + filename);
     }
 
     public void saveMessage(String filename) throws IOException {
-        try (Writer writer = new OutputStreamWriter(new FileOutputStream(filename))) {
-            Gson gson = new GsonBuilder().create();
-            gson.toJson(history, writer);
-        }
-
+        LoaderSaver.saveMessage(filename, history);
         System.out.println("save " + history.size() + " messages to " + filename);
         UserInteface.write("save " + history.size() + " messages to " + filename);
     }
