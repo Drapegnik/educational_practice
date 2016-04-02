@@ -1,5 +1,6 @@
 package by.bsu.famcs.drapegnik.cleancode;
 
+import by.bsu.up.chat.common.models.Message;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -12,18 +13,18 @@ import java.util.List;
  * Created by Drapegnik on 02.04.16.
  */
 public class LoaderSaver {
-    public static List<JsonMessage> loadMessage(String filename) throws IOException {
-        List<JsonMessage> data = new ArrayList<>();
+    public static List<Message> loadMessage(String filename) throws IOException {
+        List<Message> data = new ArrayList<>();
         try (Reader reader = new InputStreamReader(new FileInputStream(filename))) {
             Gson gson = new GsonBuilder().create();
-            JsonMessage[] temp = gson.fromJson(reader, JsonMessage[].class);
+            Message[] temp = gson.fromJson(reader, Message[].class);
             reader.close();
             Collections.addAll(data, temp);
         }
         return data;
     }
 
-    public static void saveMessage(String filename, List<JsonMessage> data) throws IOException {
+    public static void saveMessage(String filename, List<Message> data) throws IOException {
         try (Writer writer = new OutputStreamWriter(new FileOutputStream(filename))) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(data, writer);

@@ -1,15 +1,12 @@
 package by.bsu.famcs.drapegnik.cleancode;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import by.bsu.up.chat.common.models.Message;
 
 import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -18,7 +15,7 @@ import java.util.regex.PatternSyntaxException;
  * Created by Drapegnik on 23.02.16.
  */
 public class History {
-    private List<JsonMessage> history;
+    private List<Message> history;
 
     public History() {
         history = new ArrayList<>();
@@ -41,7 +38,7 @@ public class History {
             else
                 to = System.currentTimeMillis();
 
-            for (JsonMessage mes : history)
+            for (Message mes : history)
                 if (mes.getTimestamp() >= from && mes.getTimestamp() <= to) {
                     System.out.println(mes);
                     count++;
@@ -67,12 +64,12 @@ public class History {
     }
 
     public void addMessage(String author, String message) {
-        history.add(new JsonMessage(author, message));
+        history.add(new Message(author, message));
         UserInteface.write("add '" + message + "' message by " + author);
     }
 
     public void deleteMessage(String id) {
-        for (JsonMessage mes : history) {
+        for (Message mes : history) {
             if (mes.getId().equals(id)) {
                 history.remove(mes);
                 break;
@@ -84,7 +81,7 @@ public class History {
 
     public void searchMessagesByAuthor(String author) {
         int count = 0;
-        for (JsonMessage mes : history) {
+        for (Message mes : history) {
             if (mes.getAuthor().equals(author)) {
                 System.out.println(mes);
                 count++;
@@ -96,8 +93,8 @@ public class History {
 
     public void searchMessagesByKeyWord(String keyword) {
         int count = 0;
-        for (JsonMessage mes : history) {
-            if (mes.getMessage().toLowerCase().contains(keyword.toLowerCase())) {
+        for (Message mes : history) {
+            if (mes.getText().toLowerCase().contains(keyword.toLowerCase())) {
                 System.out.println(mes);
                 count++;
             }
@@ -108,9 +105,9 @@ public class History {
 
     public void searchMessagesByRegExp(String regexp) {
         int count = 0;
-        for (JsonMessage mes : history) {
+        for (Message mes : history) {
             try {
-                if (Pattern.matches(regexp, mes.getAuthor()) || Pattern.matches(regexp, mes.getId()) || Pattern.matches(regexp, mes.getMessage())) {
+                if (Pattern.matches(regexp, mes.getAuthor()) || Pattern.matches(regexp, mes.getId()) || Pattern.matches(regexp, mes.getText())) {
                     System.out.println(mes);
                     count++;
                 }

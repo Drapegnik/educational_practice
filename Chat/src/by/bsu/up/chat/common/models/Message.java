@@ -1,20 +1,35 @@
 package by.bsu.up.chat.common.models;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Message implements Serializable {
 
-    private String id;
+    private UUID id;
     private String author;
     private long timestamp;
     private String text;
 
+    public Message() {
+        this.author = "none";
+        this.timestamp = System.currentTimeMillis();
+        this.text = "none";
+        this.id = UUID.randomUUID();
+    }
+
+    public Message(String author, String text) {
+        this.author = author;
+        this.timestamp = System.currentTimeMillis();
+        this.text = text;
+        this.id = UUID.randomUUID();
+    }
+
     public String getId() {
-        return id;
+        return id.toString();
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = UUID.fromString(id);
     }
 
     public String getAuthor() {
@@ -43,11 +58,11 @@ public class Message implements Serializable {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "id='" + id + '\'' +
-                ", author='" + author + '\'' +
-                ", timestamp=" + timestamp +
-                ", text='" + text + '\'' +
+        return "{" +
+                "'id':'" + id + '\'' +
+                ", 'author':'" + author + '\'' +
+                ", 'timestamp':'" + timestamp + '\'' +
+                ", 'text':'" + text + '\'' +
                 '}';
     }
 }
