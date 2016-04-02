@@ -40,4 +40,8 @@ public class Response {
         return new Response(Constants.RESPONSE_CODE_OK, body);
     }
 
+    public static Response withCode(int code) {
+        return new Response(code, "");
+    }
+
 }
