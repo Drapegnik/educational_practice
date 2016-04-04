@@ -13,6 +13,7 @@ import java.util.List;
 public class InMemoryMessageStorage implements MessageStorage {
 
     private static final String DEFAULT_PERSISTENCE_FILE = "messages.srg";
+    private static final String HISTORY_FILENAME = "history.json";
 
     private static final Logger logger = Log.create(InMemoryMessageStorage.class);
 
@@ -65,7 +66,7 @@ public class InMemoryMessageStorage implements MessageStorage {
     @Override
     public void saveMessages() {
         try {
-            LoaderSaver.saveMessage("history.json", messages);
+            LoaderSaver.saveMessage(HISTORY_FILENAME, messages);
         } catch (IOException ex) {
             logger.error("Problem with saving history in file", ex);
         }
@@ -74,7 +75,7 @@ public class InMemoryMessageStorage implements MessageStorage {
     @Override
     public void loadMessages() {
         try {
-            messages = LoaderSaver.loadMessage("history.json");
+            messages = LoaderSaver.loadMessage(HISTORY_FILENAME);
         } catch (IOException ex) {
             logger.error("Problem with loading history from file", ex);
         }
