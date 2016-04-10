@@ -77,3 +77,26 @@
 02.04.2016-09:30:49 - Problem with editing message by id: 92dff7ee-00d7-41e5-a3db-e7189963ee3e
 02.04.2016-09:31:28 - Editing message by id: 46f408b2-72cb-4307-b6e6-95a8515eb7c0 with text: What’s up?
 02.04.2016-09:34:19 - Received new message from user: {'id':'11dff7ee-00d7-41e5-a3db-e7189963ee3e', 'author':'Drapegnik', 'timestamp':'1459619968633', 'text':'lab7 complete', 'isDelete':'false', 'isEdit':'false'}
+10.04.2016-03:51:59 - Could not parse token
+10.04.2016-03:52:04 - Could not parse token
+10.04.2016-03:52:04 - Could not parse token
+10.04.2016-03:52:05 - Could not parse token
+10.04.2016-03:53:56 - Could not parse token
+10.04.2016-03:53:59 - Could not parse token
+10.04.2016-05:15:54 - An error occurred when dispatching request.
+10.04.2016-05:19:12 - An error occurred when dispatching request.
+10.04.2016-05:21:29 - Absent query in request
+10.04.2016-05:24:03 - Received new message from user: {'id':'81399167-0241-4b06-a94e-25e44590b00e', 'author':'User1', 'timestamp':'1460298243833', 'text':'sdasdsad', 'isDelete':'false', 'isEdit':'false'}
+10.04.2016-10:06:34 - Received new message from user: {'id':'d3c61b40-0438-4c2e-ab38-b30f38b455e4', 'author':'User1', 'timestamp':'1460315194256', 'text':'sdfsdf', 'isDelete':'false', 'isEdit':'false'}
+10.04.2016-10:21:17 - Received new message from user: {'id':'efbab479-0144-4088-9553-236cb36fe83e', 'author':'User1', 'timestamp':'1460316077108', 'text':'dfsdfs', 'isDelete':'false', 'isEdit':'false'}
+10.04.2016-10:21:21 - Received new message from user: {'id':'b4ed3956-7616-42d1-bf94-4f52c73b1eaa', 'author':'User1', 'timestamp':'1460316081004', 'text':'sdfdsfsdfs', 'isDelete':'false', 'isEdit':'false'}
+10.04.2016-10:29:31 - Received new message from user: {'id':'f6e16095-7b3c-4899-a8ef-2d6f768c5397', 'author':'User1', 'timestamp':'1460316571507', 'text':'server and client connect!', 'isDelete':'false', 'isEdit':'false'}
+10.04.2016-10:42:21 - Token query parameter is required
+10.04.2016-10:42:48 - Absent query in request
+10.04.2016-11:12:20 - Removed message by id: 8a253b16-e934-4cd6-8d1d-f631ac7a8e44
+10.04.2016-11:30:24 - Editing message by id: 11dff7ee-00d7-41e5-a3db-e7189963ee3e with text: lab7 complete!
+10.04.2016-11:31:46 - Editing message by id: 11dff7ee-00d7-41e5-a3db-e7189963ee3e with text: lab7 complete!!!
+10.04.2016-11:32:21 - Received new message from user: {'id':'c8525b12-ea15-4bee-8174-d057bc576693', 'author':'Drapegnik', 'timestamp':'1460320341130', 'text':'lab8 complete', 'isDelete':'false', 'isEdit':'false'}
+10.04.2016-11:32:36 - Editing message by id: c8525b12-ea15-4bee-8174-d057bc576693 with text: lab8 complete!11
+10.04.2016-11:32:58 - Removed message by id: 11dff7ee-00d7-41e5-a3db-e7189963ee3e
+10.04.2016-11:33:10 - Token query parameter is required

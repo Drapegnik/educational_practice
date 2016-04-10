@@ -118,7 +118,10 @@ public class MessageHelper {
         String id = ((String) jsonObject.get(Constants.Message.FIELD_ID));
         String text = ((String) jsonObject.get(Constants.Message.FIELD_TEXT));
         Message message = new Message();
-        message.setId(id);
+        if (id != null)
+            message.setId(id);
+        else
+            message.setId();
         message.setText(text);
         if (isPOST) {
             String author = ((String) jsonObject.get(Constants.Message.FIELD_AUTHOR));

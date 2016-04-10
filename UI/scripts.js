@@ -2,19 +2,19 @@
  * Created by Drapegnik on 03.03.16.
  */
 
-var name = "User";
-var id = 0;
-
-var messageList = [];
+var App = {
+    name: "User",
+    mainUrl: 'http://localhost:8080/chat',
+    id: 0,
+    messageList: [],
+    token: 'TN11EN',
+    isPolling: true
+};
 
 function run() {
-    messageList = loadMessages() || [
-            newMes('Hi')
-        ];
-    id = messageList.length;
-    name = loadUsername() || "User";
-    document.getElementById("name").value = name;
-    render(messageList, true);
+    App.name = loadUsername() || "User";
+    document.getElementById("name").value = App.name;
+    loadMessages(true);
 }
 
 function changeName() {
@@ -36,15 +36,15 @@ function changeName() {
         inputName.setAttribute("placeholder", "name can't be blank");
         inputName.classList.add("holdcol");
     }
-    else if (name != inputName.value.trim()) {
-        name = inputName.value.trim();
-        saveUsername(name);
+    else if (App.name != inputName.value.trim()) {
+        App.name = inputName.value.trim();
+        saveUsername(App.name);
 
         var messages = document.getElementsByTagName("li");
         var times = document.getElementsByClassName("time");
 
         for (var i = 0; i < messages.length; i++) {
-            if (messages[i].getElementsByClassName("myname")[0].textContent != name)
+            if (messages[i].getElementsByClassName("myname")[0].textContent != App.name)
                 swapUsers(messages[i], times[i], "in", "out", true);
             else
                 swapUsers(messages[i], times[i], "out", "in", false);
@@ -60,20 +60,27 @@ function send() {
         message.classList.add("holdcol");
     }
     else {
-        messageList.push(newMes(message.value));
-        render(messageList, true);
+        var mes = newMes(message.value);
+
+        ajax('POST', App.mainUrl, JSON.stringify(mes), function () {
+            App.messageList.push(mes);
+            render(App.messageList, true);
+        });
     }
     message.value = "";
 }
 
 function deleteMes(id) {
-    messageList[id - 1].isDelete = true;
-    messageList[id - 1].time = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-    render(messageList, false);
+    var mesToDelete = {id: App.messageList[id].id};
+
+    ajax('DELETE', App.mainUrl, JSON.stringify(mesToDelete), function () {
+        render(App.messageList, false);
+    });
 
 }
 
 function editMes(id) {
+    App.isPolling = false;
     var text = document.getElementById("text" + id);
     text.hidden = true;
 
@@ -93,24 +100,30 @@ function saveMes(inputId) {
         input.classList.add("holdcol");
     }
     else {
-        messageList[inputId.substr(5) - 1].text = input.value;
-        messageList[inputId.substr(5) - 1].time = new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
-        messageList[inputId.substr(5) - 1].isEdit = true;
+        var mesToPut = {
+            id: App.messageList[inputId.substr(5)].id,
+            text: input.value
+        };
+
+        ajax('PUT', App.mainUrl, JSON.stringify(mesToPut), function () {
+            render(App.messageList, false);
+        });
+
         input.hidden = true;
         input.nextElementSibling.firstElementChild.hidden = true;
-
-        render(messageList, false);
+        App.isPolling = true;
     }
 }
 
 function cancelMes(inputId) {
     var input = document.getElementById(inputId);
-    input.value = messageList[inputId.substr(5) - 1].text;
+    input.value = App.messageList[inputId.substr(5)].text;
 
     input.hidden = true;
     input.nextElementSibling.firstElementChild.hidden = true;
 
-    render(messageList, false);
+    render(App.messageList, false);
+    App.isPolling = true;
 }
 
 function enter(e) {
@@ -131,27 +144,29 @@ document.onkeydown = function (e) {
 
 function render(messages, isRelocate) {
     document.getElementById("chat").innerHTML = "";
-    for (var i = 0; i < messages.length; i++)
+    for (var i = 0; i < messages.length; i++) {
+        messages[i].locId = i;
+        messages[i].time = new Date(messages[i].timestamp).toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
         renderMes(messages[i]);
+    }
     if (isRelocate)
-        document.location.href = "#id" + id;
-    saveMessages(messages);
+        document.location.href = "#id" + App.id;
 }
 
 function renderMes(mes) {
     var li = document.createElement("li");
-    li.setAttribute("id", "id" + mes.id);
-    li.innerHTML = "<a href='#' onclick='deleteMes(\"" + mes.id + "\")'><i class='fa fa-trash'></i></a> " +
-        "<a href='#' onclick='editMes(\"" + mes.id + "\")'><i class='fa fa-pencil'></i></a>";
+    li.setAttribute("id", "id" + mes.locId);
+    li.innerHTML = "<a href='#' onclick='deleteMes(\"" + mes.locId + "\")'><i class='fa fa-trash'></i></a> " +
+        "<a href='#' onclick='editMes(\"" + mes.locId + "\")'><i class='fa fa-pencil'></i></a>";
 
     var div = document.createElement("div");
     div.classList.add("text");
-    div.setAttribute("id", "text" + mes.id);
+    div.setAttribute("id", "text" + mes.locId);
     div.textContent = mes.text;
 
     var input = document.createElement("input");
     input.setAttribute("type", "text");
-    input.setAttribute("id", "input" + mes.id);
+    input.setAttribute("id", "input" + mes.locId);
     input.setAttribute("name", "edit");
     input.classList.add("editInput");
     input.hidden = true;
@@ -163,15 +178,15 @@ function renderMes(mes) {
     });
 
     var p_sign = document.createElement("p");
-    p_sign.textContent = mes.user;
+    p_sign.textContent = mes.author;
     p_sign.classList.add("sign", "myname");
 
     var p_time = document.createElement("p");
     p_time.textContent = mes.time;
-    p_time.setAttribute("id", "time" + mes.id);
+    p_time.setAttribute("id", "time" + mes.locId);
 
 
-    if (mes.user == name) {
+    if (mes.author == App.name) {
         li.classList.add("message", "in");
         p_time.classList.add("time", "in");
     }
@@ -181,7 +196,7 @@ function renderMes(mes) {
     }
 
     var cancel = document.createElement("span");
-    cancel.innerHTML = "<a href='#' style='color: #d9534f;' onclick='cancelMes(\"" + mes.id + "\")'><i class='fa fa-times'></i></a>";
+    cancel.innerHTML = "<a href='#' style='color: #d9534f;' onclick='cancelMes(\"" + mes.locId + "\")'><i class='fa fa-times'></i></a>";
     cancel.firstElementChild.hidden = true;
 
     li.appendChild(input);
@@ -197,7 +212,7 @@ function renderMes(mes) {
 
 
 function renderMesState(li, p_time, mes) {
-    if (mes.isDelete || mes.user != name) {
+    if (mes.isDelete || mes.author != App.name) {
         if (mes.isDelete) {
             var text = li.getElementsByClassName("text")[0];
             text.classList.add("delete");
@@ -213,48 +228,47 @@ function renderMesState(li, p_time, mes) {
 
 
 function newMes(text) {
-    id++;
+    App.id++;
     return {
-        user: name,
-        id: id,
+        author: App.name,
+        locId: App.id,
         text: text,
-        time: new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1"),
+        timestamp: new Date().getTime(),
         isDelete: false,
         isEdit: false
     };
-}
-
-function saveMessages(listToSave) {
-    if (!isLocStorOk())
-        return;
-
-    localStorage.setItem("Chat History", JSON.stringify(listToSave));
 }
 
 function saveUsername(name) {
     if (!isLocStorOk())
         return;
 
-    console.log(name);
     localStorage.setItem("Username", name);
 }
 
-function loadMessages() {
-    if (!isLocStorOk())
-        return;
+function loadMessages(isRelocate) {
+    console.log("load");
+    var url = App.mainUrl + '?token=' + App.token;
 
-    var item = localStorage.getItem("Chat History");
-
-    return item && JSON.parse(item);
+    ajax('GET', url, null, function (responseText) {
+        var response = JSON.parse(responseText);
+        App.messageList = response.messages;
+        App.id = App.messageList.length - 1;
+        render(App.messageList, isRelocate);
+    });
 }
+
+setInterval(function () {
+    if (App.isPolling)
+        loadMessages(false);
+}, 500);
+
 
 function loadUsername() {
     if (!isLocStorOk())
         return;
 
-    var item = localStorage.getItem("Username");
-    console.log(item);
-    return item;
+    return localStorage.getItem("Username");
 }
 
 function isLocStorOk() {
@@ -264,4 +278,69 @@ function isLocStorOk() {
     }
     else
         return true;
+}
+
+function serverStatus(isOk) {
+    document.getElementById("ok").hidden = !isOk;
+    document.getElementById("err").hidden = isOk;
+}
+
+function defaultErrorHandler(message) {
+    serverStatus(false);
+    console.error(message);
+}
+
+function isError(text) {
+    if (text == "")
+        return false;
+
+    try {
+        var obj = JSON.parse(text);
+    } catch (ex) {
+        return true;
+    }
+
+    return !!obj.error;
+}
+
+function ajax(method, url, data, continueWith, continueWithError) {
+    var xhr = new XMLHttpRequest();
+
+    continueWithError = continueWithError || defaultErrorHandler;
+    xhr.open(method || 'GET', url, true);
+
+    xhr.onload = function () {
+        if (xhr.readyState !== 4)
+            return;
+
+        if (xhr.status != 200) {
+            continueWithError('Error on the server side, response ' + xhr.status);
+            return;
+        }
+
+        if (isError(xhr.responseText)) {
+            continueWithError('Error on the server side, response ' + xhr.responseText);
+            return;
+        }
+
+        continueWith(xhr.responseText);
+        serverStatus(true);
+    };
+
+    xhr.ontimeout = function () {
+        continueWithError('Server timed out !');
+    };
+
+    xhr.onerror = function (e) {
+        var errMsg = 'Server connection error !\n' +
+            '\n' +
+            'Check if \n' +
+            '- server is active\n' +
+            '- server sends header "Access-Control-Allow-Origin:*"\n' +
+            '- server sends header "Access-Control-Allow-Methods: PUT, DELETE, POST, GET, OPTIONS"\n';
+
+        continueWithError(errMsg);
+    };
+
+    xhr.send(data);
 }

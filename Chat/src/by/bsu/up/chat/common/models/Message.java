@@ -38,6 +38,10 @@ public class Message implements Serializable {
         this.id = UUID.fromString(id);
     }
 
+    public void setId() {
+        this.id = UUID.randomUUID();
+    }
+
     public String getAuthor() {
         return author;
     }
