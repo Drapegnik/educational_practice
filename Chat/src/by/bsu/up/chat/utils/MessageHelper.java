@@ -126,12 +126,10 @@ public class MessageHelper {
         if (isPOST) {
             String author = ((String) jsonObject.get(Constants.Message.FIELD_AUTHOR));
             long timestamp = ((long) jsonObject.get(Constants.Message.FIELD_TIMESTAMP));
-            boolean isDelete = ((boolean) jsonObject.get(Constants.Message.FIELD_DELETE));
-            boolean isEdit = ((boolean) jsonObject.get(Constants.Message.FIELD_EDIT));
+            String status = ((String) jsonObject.get(Constants.Message.FIELD_STATUS));
             message.setAuthor(author);
             message.setTimestamp(timestamp);
-            message.setDelete(isDelete);
-            message.setEdit(isEdit);
+            message.setStatus(status);
         }
         return message;
     }
@@ -167,8 +165,7 @@ public class MessageHelper {
         jsonObject.put(Constants.Message.FIELD_AUTHOR, message.getAuthor());
         jsonObject.put(Constants.Message.FIELD_TIMESTAMP, message.getTimestamp());
         jsonObject.put(Constants.Message.FIELD_TEXT, message.getText());
-        jsonObject.put(Constants.Message.FIELD_DELETE, message.isDelete());
-        jsonObject.put(Constants.Message.FIELD_EDIT, message.isEdit());
+        jsonObject.put(Constants.Message.FIELD_STATUS, message.getStatus());
         return jsonObject;
     }
 }

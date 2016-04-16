@@ -66,7 +66,7 @@ public class Launcher {
             logger.info(String.format("Get list of messages: " +
                     "GET http://%s:%d%s?token=TN11EN", serverHost, port, Constants.CONTEXT_PATH));
             logger.info(String.format("Send message: " +
-                            "POST http://%s:%d%s provide body json in format {\"id\" : \"92dff7ee-00d7-41e5-a3db-e7189963ee3e\", \"author\":\"User1\", \"text\":\"Hello, all!\", \"timestamp\":1459169330000, \"isDelete\":false, \"isEdit\":false}",
+                            "POST http://%s:%d%s provide body json in format {\"id\" : \"92dff7ee-00d7-41e5-a3db-e7189963ee3e\", \"author\":\"User1\", \"text\":\"Hello, all!\", \"timestamp\":1459169330000, \"status\":\"default\"}",
                     serverHost, port, Constants.CONTEXT_PATH));
             logger.info(String.format("Remove message: " +
                             "DELETE http://%s:%d%s provide body json in format {\"id\" : \"92dff7ee-00d7-41e5-a3db-e7189963ee3e\"}",

@@ -100,3 +100,44 @@
 10.04.2016-11:32:36 - Editing message by id: c8525b12-ea15-4bee-8174-d057bc576693 with text: lab8 complete!11
 10.04.2016-11:32:58 - Removed message by id: 11dff7ee-00d7-41e5-a3db-e7189963ee3e
 10.04.2016-11:33:10 - Token query parameter is required
+16.04.2016-11:53:39 - Received new message from user: {'id':'92dff7ee-00d7-67e8-a3db-e7189963ee3e', 'author':'Ivan', 'timestamp':'1459169330000', 'text':'chek new model', 'status':'default'}
+16.04.2016-11:54:26 - Editing message by id: 92dff7ee-00d7-67e8-a3db-e7189963ee3e with text: chek new model edit
+16.04.2016-12:03:35 - Editing message by id: 92dff7ee-00d7-67e8-a3db-e7189963ee3e with text: chek new model edit
+16.04.2016-12:04:01 - Removed message by id: 92dff7ee-00d7-67e8-a3db-e7189963ee3e
+16.04.2016-12:07:57 - Received new message from user: {'id':'80dff7ee-00d7-67e8-a3db-e7189963ee3e', 'author':'Anon', 'timestamp':'1460797441234', 'text':'heh', 'status':'default'}
+16.04.2016-01:40:13 - Editing message by id: 80dff7ee-00d7-67e8-a3db-e7189963ee3e with text: hah
+16.04.2016-01:40:36 - Editing message by id: c8525b12-ea15-4bee-8174-d057bc576693 with text: lab8 complete!11 and lab 10 too
+16.04.2016-01:43:10 - Could not parse message.
+16.04.2016-01:44:58 - Received new message from user: {'id':'46f408b2-67cb-4307-b6e6-95a8515eb7c0', 'author':'User2', 'timestamp':'1459621888620', 'text':'testing', 'status':'default'}
+16.04.2016-01:48:15 - Received new message from user: {'id':'46f408b2-67cb-20-b6e6-95a8515eb7c0', 'author':'User2', 'timestamp':'1459611888620', 'text':'testing again', 'status':'default'}
+16.04.2016-01:48:58 - Received new message from user: {'id':'82a40021-22fa-447d-a8c2-d48400ded899', 'author':'Drapegnik', 'timestamp':'1460803738456', 'text':'Hi all!!!!', 'status':'default'}
+16.04.2016-01:49:13 - Received new message from user: {'id':'27348932-bbdc-4d6d-9e2c-991b92ba8a7d', 'author':'Drapegnik', 'timestamp':'1460803753257', 'text':'ups', 'status':'default'}
+16.04.2016-01:49:53 - Received new message from user: {'id':'40c83ce4-f996-4e98-9a8b-ff9792ce4197', 'author':'Drapegnik', 'timestamp':'1460803793747', 'text':'23423', 'status':'default'}
+16.04.2016-01:50:28 - Received new message from user: {'id':'965a7076-9a2a-4815-a1aa-d5cecbc8a50b', 'author':'Drapegnik', 'timestamp':'1460803828499', 'text':'123124', 'status':'default'}
+16.04.2016-01:50:32 - Received new message from user: {'id':'801182b5-4d3e-48c4-b848-2ca037e27e84', 'author':'Drapegnik', 'timestamp':'1460803832099', 'text':'12211212122', 'status':'default'}
+16.04.2016-01:51:45 - An error occurred when dispatching request.
+16.04.2016-01:51:46 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:47 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:48 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:49 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:50 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:51 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:52 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:53 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:54 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:55 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:56 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:57 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:58 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:51:59 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:00 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:01 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:02 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:03 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:04 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:05 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:06 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:08 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:09 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:10 - Incorrect token in request: TN187EN. Server does not have so many messages
+16.04.2016-01:52:10 - Incorrect token in request: TN187EN. Server does not have so many messages

@@ -5,41 +5,46 @@ import java.util.UUID;
 
 public class Message implements Serializable {
 
-    private UUID id;
+    private String id;
     private String author;
     private long timestamp;
     private String text;
-    private boolean isDelete;
-    private boolean isEdit;
+    private String status;
 
     public Message() {
         this.author = "none";
         this.timestamp = System.currentTimeMillis();
         this.text = "none";
-        this.id = UUID.randomUUID();
-        this.isDelete = false;
-        this.isEdit = false;
+        this.id = UUID.randomUUID().toString();
+        this.status = "default";
     }
 
     public Message(String author, String text) {
         this.author = author;
         this.timestamp = System.currentTimeMillis();
         this.text = text;
-        this.id = UUID.randomUUID();
-        this.isDelete = false;
-        this.isEdit = false;
+        this.id = UUID.randomUUID().toString();
+        this.status = "default";
+    }
+
+    public Message(String id, String author, long timestamp, String text, String status) {
+        this.id = id;
+        this.author = author;
+        this.timestamp = timestamp;
+        this.text = text;
+        this.status = status;
     }
 
     public String getId() {
-        return id.toString();
+        return id;
     }
 
     public void setId(String id) {
-        this.id = UUID.fromString(id);
+        this.id = id;
     }
 
     public void setId() {
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getAuthor() {
@@ -66,20 +71,12 @@ public class Message implements Serializable {
         this.text = text;
     }
 
-    public boolean isDelete() {
-        return isDelete;
+    public String getStatus() {
+        return status;
     }
 
-    public void setDelete(boolean delete) {
-        isDelete = delete;
-    }
-
-    public boolean isEdit() {
-        return isEdit;
-    }
-
-    public void setEdit(boolean edit) {
-        isEdit = edit;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
@@ -89,8 +86,7 @@ public class Message implements Serializable {
                 ", 'author':'" + author + '\'' +
                 ", 'timestamp':'" + timestamp + '\'' +
                 ", 'text':'" + text + '\'' +
-                ", 'isDelete':'" + isDelete + '\'' +
-                ", 'isEdit':'" + isEdit + '\'' +
+                ", 'status':'" + status + '\'' +
                 '}';
     }
 }

@@ -14,7 +14,7 @@ var App = {
 function run() {
     App.name = loadUsername() || "User";
     document.getElementById("name").value = App.name;
-    loadMessages(true);
+    loadMessages();
 }
 
 function changeName() {
@@ -63,8 +63,7 @@ function send() {
         var mes = newMes(message.value);
 
         ajax('POST', App.mainUrl, JSON.stringify(mes), function () {
-            App.messageList.push(mes);
-            render(App.messageList, true);
+            loadMessages();
         });
     }
     message.value = "";
@@ -212,8 +211,8 @@ function renderMes(mes) {
 
 
 function renderMesState(li, p_time, mes) {
-    if (mes.isDelete || mes.author != App.name) {
-        if (mes.isDelete) {
+    if (mes.status == "delete" || mes.author != App.name) {
+        if (mes.status == "delete") {
             var text = li.getElementsByClassName("text")[0];
             text.classList.add("delete");
             text.textContent = "message was delete";
@@ -222,7 +221,7 @@ function renderMesState(li, p_time, mes) {
 
         li.childNodes[0].hidden = true;
         li.childNodes[2].hidden = true;
-    } else if (mes.isEdit)
+    } else if (mes.status == "edit")
         p_time.textContent = "edit on " + mes.time;
 }
 
@@ -234,8 +233,7 @@ function newMes(text) {
         locId: App.id,
         text: text,
         timestamp: new Date().getTime(),
-        isDelete: false,
-        isEdit: false
+        status: "default"
     };
 }
 
@@ -246,21 +244,32 @@ function saveUsername(name) {
     localStorage.setItem("Username", name);
 }
 
-function loadMessages(isRelocate) {
+function loadMessages() {
     console.log("load");
     var url = App.mainUrl + '?token=' + App.token;
 
     ajax('GET', url, null, function (responseText) {
         var response = JSON.parse(responseText);
-        App.messageList = response.messages;
-        App.id = App.messageList.length - 1;
-        render(App.messageList, isRelocate);
+        for (var i = 0; i < response.messages.length; i++) {
+            if (response.messages[i].status == "default")
+                App.messageList.push(response.messages[i]);
+            else {
+                for (var j = 0; j < App.messageList.length; j++)
+                    if (App.messageList[j].id == response.messages[i].id)
+                        App.messageList[j] = response.messages[i]
+            }
+        }
+        if (App.token != response.token) {
+            App.token = response.token;
+            App.id = App.messageList.length - 1;
+            render(App.messageList, true);
+        }
     });
 }
 
 setInterval(function () {
     if (App.isPolling)
-        loadMessages(false);
+        loadMessages();
 }, 500);
 
 

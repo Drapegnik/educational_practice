@@ -41,10 +41,8 @@ public class InMemoryMessageStorage implements MessageStorage {
     @Override
     public boolean updateMessage(Message message) {
         for (Message mes : messages)
-            if (mes.getId().equals(message.getId()) && !mes.isDelete()) {
-                mes.setEdit(true);
-                mes.setText(message.getText());
-                mes.setTimestamp(System.currentTimeMillis());
+            if (mes.getId().equals(message.getId()) && !mes.getStatus().equals("delete")) {
+                addMessage(new Message(mes.getId(), mes.getAuthor(), System.currentTimeMillis(), message.getText(), "edit"));
                 return true;
             }
         return false;
@@ -53,11 +51,8 @@ public class InMemoryMessageStorage implements MessageStorage {
     @Override
     public synchronized boolean removeMessage(String messageId) {
         for (Message mes : messages)
-            if (mes.getId().equals(messageId) && !mes.isDelete()) {
-                mes.setDelete(true);
-                mes.setEdit(false);
-                mes.setText("Message was delete");
-                mes.setTimestamp(System.currentTimeMillis());
+            if (mes.getId().equals(messageId) && !mes.getStatus().equals("delete")) {
+                addMessage(new Message(mes.getId(), mes.getAuthor(), System.currentTimeMillis(), "Message was delete", "delete"));
                 return true;
             }
         return false;
