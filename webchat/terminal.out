@@ -1,0 +1,37 @@
+MacBook-Pro-Ivan:~ Drapegnik$ echo $JAVA_HOME
+/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home
+
+MacBook-Pro-Ivan:~ Drapegnik$ echo $M2_HOME
+/Applications/apache-maven-3.3.9
+
+MacBook-Pro-Ivan:~ Drapegnik$ mvn -v
+Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T19:41:47+03:00)
+Maven home: /Applications/apache-maven-3.3.9
+Java version: 1.8.0_65, vendor: Oracle Corporation
+Java home: /Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home/jre
+Default locale: ru_RU, platform encoding: UTF-8
+OS name: "mac os x", version: "10.10.5", arch: "x86_64", family: "mac"
+MacBook-Pro-Ivan:~ Drapegnik$
+
+MacBook-Pro-Ivan:~ Drapegnik$ echo $CATALINA_HOME
+/Applications/apache-tomcat-8.0.33
+
+[INFO] --- maven-archetype-plugin:2.4:generate (default-cli) @ standalone-pom ---
+[INFO] Generating project in Batch mode
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Old (1.x) Archetype: maven-archetype-webapp:1.0
+[INFO] ----------------------------------------------------------------------------
+[INFO] Parameter: basedir, Value: /Users/Drapegnik/Dropbox/bsu/educational_practice
+[INFO] Parameter: package, Value: by.bsu.famcs.drapegnik
+[INFO] Parameter: groupId, Value: by.bsu.famcs.drapegnik
+[INFO] Parameter: artifactId, Value: webchat
+[INFO] Parameter: packageName, Value: by.bsu.famcs.drapegnik
+[INFO] Parameter: version, Value: 1.0-SNAPSHOT
+[INFO] project created from Old (1.x) Archetype in dir: /Users/Drapegnik/Dropbox/bsu/educational_practice/webchat
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.358 s
+[INFO] Finished at: 2016-04-24T18:11:51+03:00
+[INFO] Final Memory: 13M/180M
+
