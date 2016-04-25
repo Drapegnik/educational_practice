@@ -1,6 +1,5 @@
 package by.bsu.famcs.drapegnik.cleancode;
 
-import by.bsu.up.chat.common.models.Message;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

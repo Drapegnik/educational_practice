@@ -1,7 +1,5 @@
 package by.bsu.famcs.drapegnik.cleancode;
 
-import by.bsu.up.chat.common.models.Message;
-
 import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;

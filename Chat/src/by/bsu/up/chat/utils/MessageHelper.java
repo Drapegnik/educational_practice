@@ -2,10 +2,9 @@ package by.bsu.up.chat.utils;
 
 import by.bsu.up.chat.Constants;
 import by.bsu.up.chat.InvalidTokenException;
-import by.bsu.up.chat.common.models.Message;
+import by.bsu.famcs.drapegnik.cleancode.Message;
 import by.bsu.up.chat.logging.Logger;
 import by.bsu.up.chat.logging.impl.Log;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,7 +13,6 @@ import org.json.simple.parser.ParseException;
 import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class MessageHelper {
 

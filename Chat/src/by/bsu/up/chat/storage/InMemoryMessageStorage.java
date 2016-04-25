@@ -1,6 +1,6 @@
 package by.bsu.up.chat.storage;
 
-import by.bsu.up.chat.common.models.Message;
+import by.bsu.famcs.drapegnik.cleancode.Message;
 import by.bsu.up.chat.logging.Logger;
 import by.bsu.up.chat.logging.impl.Log;
 import by.bsu.famcs.drapegnik.cleancode.LoaderSaver;

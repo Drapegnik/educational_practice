@@ -1,4 +1,4 @@
-package by.bsu.up.chat.common.models;
+package by.bsu.famcs.drapegnik.cleancode;
 
 import java.io.Serializable;
 import java.util.UUID;

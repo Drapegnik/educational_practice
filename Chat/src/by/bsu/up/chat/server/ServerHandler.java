@@ -2,7 +2,7 @@ package by.bsu.up.chat.server;
 
 import by.bsu.up.chat.Constants;
 import by.bsu.up.chat.InvalidTokenException;
-import by.bsu.up.chat.common.models.Message;
+import by.bsu.famcs.drapegnik.cleancode.Message;
 import by.bsu.up.chat.logging.Logger;
 import by.bsu.up.chat.logging.impl.Log;
 import by.bsu.up.chat.storage.InMemoryMessageStorage;
@@ -13,7 +13,6 @@ import by.bsu.up.chat.utils.StringUtils;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
