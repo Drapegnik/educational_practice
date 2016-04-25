@@ -78,12 +78,12 @@ public class ServerHandler implements HttpHandler {
         }
         try {
             int index = MessageHelper.parseToken(token);
+            messageStorage.loadMessages();
             if (index > messageStorage.size()) {
                 logger.info(String.format("Incorrect token in request: %s. Server does not have so many messages", token));
                 return Response.badRequest(
                         String.format("Incorrect token in request: %s. Server does not have so many messages", token));
             }
-            messageStorage.loadMessages();
             Portion portion = new Portion(index);
             List<Message> messages = messageStorage.getPortion(portion);
             String responseBody = MessageHelper.buildServerResponseBody(messages, messageStorage.size());

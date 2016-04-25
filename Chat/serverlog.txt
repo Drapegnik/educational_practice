@@ -142,3 +142,21 @@
 16.04.2016-01:52:10 - Incorrect token in request: TN187EN. Server does not have so many messages
 16.04.2016-01:52:10 - Incorrect token in request: TN187EN. Server does not have so many messages
 25.04.2016-09:52:34 - Received new message from user: {'id':'4a8adf4f-4b9f-4bf2-9994-ffe1e8aa50d2', 'author':'User', 'timestamp':'1461610354437', 'text':'fix circle dependencies', 'status':'default'}
+25.04.2016-10:03:06 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:07 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:08 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:09 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:10 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:11 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:12 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:13 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:14 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:03:59 - Incorrect token in request: TN139EN. Server does not have so many messages
+25.04.2016-10:05:07 - Received new message from user: {'id':'2e5469b8-72cb-4bfc-a55a-9c0022da3e44', 'author':'User', 'timestamp':'1461611107210', 'text':'check', 'status':'default'}
+25.04.2016-10:06:46 - Incorrect token in request: TN147EN. Server does not have so many messages
+25.04.2016-10:07:08 - Incorrect token in request: TN147EN. Server does not have so many messages
+25.04.2016-10:09:34 - Received new message from user: {'id':'868ff2e8-c01f-43d1-8393-fff90fae6614', 'author':'User', 'timestamp':'1461611374642', 'text':'ku', 'status':'default'}
+25.04.2016-10:10:48 - Incorrect token in request: TN155EN. Server does not have so many messages
+25.04.2016-10:11:43 - Incorrect token in request: TN155EN. Server does not have so many messages
+25.04.2016-10:11:47 - Incorrect token in request: TN155EN. Server does not have so many messages
+25.04.2016-10:15:26 - Received new message from user: {'id':'49940f7d-7311-4454-9024-91afa1ddc730', 'author':'User', 'timestamp':'1461611726677', 'text':'fix?', 'status':'default'}
