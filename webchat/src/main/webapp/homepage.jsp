@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@  taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
@@ -6,9 +8,9 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="style.css">
     <script src="scripts.js"></script>
     <title>Chat</title>
 </head>
@@ -19,8 +21,10 @@
         <div class="headline">
             <h1>Chat</h1>
         </div>
+        <div><h2 class="control-label marg">Hello, <c:out value="${requestScope.username}"></c:out>!</h2></div>
         <div class="status">
-            <span>server: <span hidden id="err"><i style="color: #d9534f;" class="fa fa-exclamation-triangle"></i></span>
+            <span>server: <span hidden id="err"><i style="color: #d9534f;"
+                                                   class="fa fa-exclamation-triangle"></i></span>
                 <span id="ok"><i style="color: #5cb85c;" class="fa fa-check-circle"></i></span></span>
         </div>
     </div>
@@ -28,7 +32,8 @@
 <section class="content">
     <div class="form-group">
         <label class="control-label marg" for="name">You name:</label>
-        <input onkeypress="enter(event)" class="form-control marg" id="name" type="text" value="User"
+        <input onkeypress="enter(event)" class="form-control marg" id="name" type="text"
+               value="${requestScope.username}"
                placeholder="you name">
         <button onclick="changeName()" class="btn marg">Submit</button>
     </div>

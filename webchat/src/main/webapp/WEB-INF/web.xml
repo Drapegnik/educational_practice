@@ -4,14 +4,11 @@
 
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
-    <servlet>
-        <servlet-name>EnvVarsServlet</servlet-name>
-        <servlet-class>
-            by.bsu.famcs.drapegnik.EnvVarsServlet
-        </servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EnvVarsServlet</servlet-name>
-        <url-pattern>/var</url-pattern>
-    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>/login.jsp</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/notfound.html</location>
+    </error-page>
 </web-app>

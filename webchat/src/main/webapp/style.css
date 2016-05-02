@@ -183,3 +183,11 @@ li > a {
     border: none;
     width: 70%;
 }
+
+#login_form {
+    width: 250px;
+}
+
+.err {
+    color: #d9534f;
+}
