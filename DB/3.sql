@@ -1,0 +1,1 @@
+SELECT * FROM chat.Messages WHERE (user_id = 7 && data > '2016-05-09 00:00:00' && data <= '2016-05-9 23:59:59');

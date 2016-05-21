@@ -1,0 +1,1 @@
+SELECT user_id, COUNT(user_id) FROM chat.Messages WHERE (data > '2016-05-09 00:00:00' && data <= '2016-05-09 23:59:59') GROUP BY user_id;

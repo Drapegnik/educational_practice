@@ -1,0 +1,1 @@
+SELECT Users.name, Messages.text, Messages.data FROM chat.Users, chat.Messages WHERE (Users.id = Messages.user_id && LENGTH(Messages.text) > 140) ORDER BY Messages.data;

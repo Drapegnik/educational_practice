@@ -1,0 +1,1 @@
+SELECT * FROM chat.Messages ORDER BY data;
