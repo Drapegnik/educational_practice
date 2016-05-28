@@ -12,44 +12,8 @@ var App = {
 };
 
 function run() {
-    App.name = loadUsername() || "User";
-    document.getElementById("name").value = App.name;
+    App.name = document.getElementById("name").value;
     loadMessages();
-}
-
-function changeName() {
-    var inputName = document.getElementById("name");
-
-    function swapUsers(mes, time, classRemove, classAdd, isHidden) {
-        mes.classList.remove(classRemove);
-        mes.classList.add(classAdd);
-        if (!mes.getElementsByClassName("text")[0].classList.contains("delete")) {
-            mes.childNodes[0].hidden = isHidden;
-            mes.childNodes[2].hidden = isHidden;
-        }
-        time.classList.remove(classRemove);
-        time.classList.add(classAdd);
-
-    }
-
-    if (inputName.value.trim().length == 0) {
-        inputName.setAttribute("placeholder", "name can't be blank");
-        inputName.classList.add("holdcol");
-    }
-    else if (App.name != inputName.value.trim()) {
-        App.name = inputName.value.trim();
-        saveUsername(App.name);
-
-        var messages = document.getElementsByTagName("li");
-        var times = document.getElementsByClassName("time");
-
-        for (var i = 0; i < messages.length; i++) {
-            if (messages[i].getElementsByClassName("myname")[0].textContent != App.name)
-                swapUsers(messages[i], times[i], "in", "out", true);
-            else
-                swapUsers(messages[i], times[i], "out", "in", false);
-        }
-    }
 }
 
 function send() {
@@ -129,8 +93,6 @@ function enter(e) {
     if (e.keyCode == 13)
         if (e.srcElement.id == "mes")
             send();
-        else if (e.srcElement.id == "name")
-            changeName();
         else
             saveMes(e.srcElement.id);
 }
@@ -237,13 +199,6 @@ function newMes(text) {
     };
 }
 
-function saveUsername(name) {
-    if (!isLocStorOk())
-        return;
-
-    localStorage.setItem("Username", name);
-}
-
 function loadMessages() {
     console.log("load");
     var url = App.mainUrl + '?token=' + App.token;
@@ -271,23 +226,6 @@ setInterval(function () {
     if (App.isPolling)
         loadMessages();
 }, 500);
-
-
-function loadUsername() {
-    if (!isLocStorOk())
-        return;
-
-    return localStorage.getItem("Username");
-}
-
-function isLocStorOk() {
-    if (typeof(Storage) == "undefined") {
-        alert('localStorage is not accessible');
-        return false;
-    }
-    else
-        return true;
-}
 
 function serverStatus(isOk) {
     document.getElementById("ok").hidden = !isOk;

@@ -21,7 +21,6 @@
         <div class="headline">
             <h1>Chat</h1>
         </div>
-        <div><h2 class="control-label marg">Hello, <c:out value="${requestScope.username}"></c:out>!</h2></div>
         <div class="status">
             <span>server: <span hidden id="err"><i style="color: #d9534f;"
                                                    class="fa fa-exclamation-triangle"></i></span>
@@ -31,11 +30,8 @@
 </header>
 <section class="content">
     <div class="form-group">
-        <label class="control-label marg" for="name">You name:</label>
-        <input onkeypress="enter(event)" class="form-control marg" id="name" type="text"
-               value="${requestScope.username}"
-               placeholder="you name">
-        <button onclick="changeName()" class="btn marg">Submit</button>
+        <label class="control-label marg" for="name">Hello, <c:out value="${requestScope.username}"></c:out>!</label>
+        <input id="name" type="text" value="${requestScope.username}" hidden>
     </div>
 
     <div class="chat-block">
