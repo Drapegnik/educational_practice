@@ -41,13 +41,16 @@ public class UserHandler {
         }
     }
 
-    public static boolean checkUser(User obj) {
+    public static String getUserId(User obj) {
         try {
             loadUsers(filename);
         } catch (IOException ex) {
             System.out.println("some problems with file IO");
         }
-        return userList.contains(obj);
+        if (userList.contains(obj))
+            return obj.getId();
+        else
+            return null;
     }
 
     public static void main(String[] args) {

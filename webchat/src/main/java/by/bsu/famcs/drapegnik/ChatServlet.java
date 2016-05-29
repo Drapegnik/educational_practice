@@ -33,6 +33,7 @@ public class ChatServlet extends HttpServlet {
             messageStorage.loadMessages();
             if (index > messageStorage.size()) {
                 System.out.println(String.format("Incorrect token in request: %s. Server does not have so many messages", req.getParameter("token")));
+                resp.getOutputStream().println(String.format("Incorrect token in request: %s. Server does not have so many messages", req.getParameter("token")));
                 resp.sendError(Constants.RESPONSE_CODE_BAD_REQUEST, String.format("Incorrect token in request: %s. Server does not have so many messages", req.getParameter("token")));
             }
             Portion portion = new Portion(index);
@@ -41,6 +42,7 @@ public class ChatServlet extends HttpServlet {
 
         } catch (InvalidTokenException e) {
             System.out.println("Could not parse token\n" + e);
+            resp.getOutputStream().println("Could not parse token\n" + e);
             resp.sendError(Constants.RESPONSE_CODE_BAD_REQUEST, "Could not parse token\n" + e);
         }
     }
@@ -55,6 +57,7 @@ public class ChatServlet extends HttpServlet {
             resp.setStatus(Constants.RESPONSE_CODE_OK);
         } catch (ParseException e) {
             System.out.println("Could not parse message.\n" + e);
+            resp.getOutputStream().println("Could not parse message.\n" + e);
             resp.sendError(Constants.RESPONSE_CODE_BAD_REQUEST, "Incorrect request body");
         }
     }
@@ -68,11 +71,13 @@ public class ChatServlet extends HttpServlet {
                 System.out.println(String.format("Editing message by id: %s with text: %s", message.getId(), message.getText()));
                 resp.setStatus(Constants.RESPONSE_CODE_OK);
             } else {
+                resp.getOutputStream().println(String.format("Problem with editing message by id: %s", message.getId()));
                 System.out.println(String.format("Problem with editing message by id: %s", message.getId()));
                 resp.setStatus(Constants.RESPONSE_CODE_BAD_REQUEST);
             }
         } catch (ParseException e) {
             System.out.println("Could not parse message.\n" + e);
+            resp.getOutputStream().println("Could not parse message.\n" + e);
             resp.sendError(Constants.RESPONSE_CODE_BAD_REQUEST, "Incorrect request body");
         }
     }
