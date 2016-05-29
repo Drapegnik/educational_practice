@@ -4,6 +4,7 @@
 
 var App = {
     name: "User",
+    hostUrl: 'http://localhost:8080',
     mainUrl: 'http://localhost:8080/chat',
     id: 0,
     messageList: [],
@@ -13,6 +14,13 @@ var App = {
 
 function run() {
     App.name = document.getElementById("name").value;
+    console.log(App.name);
+    if (App.name == "") {
+        loadUsername();
+    }
+    saveUsername(App.name);
+    document.getElementById("name").value = App.name;
+
     loadMessages();
 }
 
@@ -290,4 +298,70 @@ function ajax(method, url, data, continueWith, continueWithError) {
     };
 
     xhr.send(data);
+}
+
+function saveUsername(name) {
+    if (!isLocStorOk())
+        return;
+
+    localStorage.setItem("Username", name);
+}
+
+function loadUsername() {
+    console.log("lodUser");
+    if (!isLocStorOk())
+        return;
+    console.log(localStorage.getItem("Username"));
+    App.name = localStorage.getItem("Username");
+    console.log(App.name);
+    document.getElementById("locname").innerText = App.name;
+}
+
+function isLocStorOk() {
+    if (typeof(Storage) == "undefined") {
+        alert('localStorage is not accessible');
+        return false;
+    }
+    else
+        return true;
+}
+
+function setCookie(name, value, options) {
+    options = options || {};
+
+    var expires = options.expires;
+
+    if (typeof expires == "number" && expires) {
+        var d = new Date();
+        d.setTime(d.getTime() + expires * 1000);
+        expires = options.expires = d;
+    }
+    if (expires && expires.toUTCString) {
+        options.expires = expires.toUTCString();
+    }
+
+    value = encodeURIComponent(value);
+
+    var updatedCookie = name + "=" + value;
+
+    for (var propName in options) {
+        updatedCookie += "; " + propName;
+        var propValue = options[propName];
+        if (propValue !== true) {
+            updatedCookie += "=" + propValue;
+        }
+    }
+
+    document.cookie = updatedCookie;
+}
+
+function deleteCookie(name) {
+    setCookie(name, "", {
+        expires: -1
+    })
+}
+
+function logOut() {
+    deleteCookie('uid');
+    window.location = App.hostUrl + '/login.jsp';
 }

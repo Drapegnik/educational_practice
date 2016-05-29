@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.jws.soap.SOAPBinding;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,10 +48,22 @@ public class UserHandler {
         } catch (IOException ex) {
             System.out.println("some problems with file IO");
         }
-        if (userList.contains(obj))
-            return obj.getId();
-        else
-            return null;
+        for (User user : userList)
+            if (user.equals(obj))
+                return user.getId();
+        return null;
+    }
+
+    public static User getUserById(String id) {
+        try {
+            loadUsers(filename);
+        } catch (IOException ex) {
+            System.out.println("some problems with file IO");
+        }
+        for (User user : userList)
+            if (user.getId().equals(id))
+                return user;
+        return null;
     }
 
     public static void main(String[] args) {

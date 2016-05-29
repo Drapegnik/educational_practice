@@ -26,8 +26,9 @@ public class LoginServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         cookieLifeTime = Integer.parseInt(config.getInitParameter("cookie-live-time"));
+        String absolutePath = getServletContext().getRealPath("/");
+        new UserHandler(absolutePath.substring(0, absolutePath.length() - 15) + FILE_NAME);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,10 +39,9 @@ public class LoginServlet extends HttpServlet {
         } else {
 
             User user = new User(req.getParameter(PARAM_NAME), req.getParameter(PARAM_PASSWORD));
-            String absolutePath = getServletContext().getRealPath("/");
-            new UserHandler(absolutePath.substring(0, absolutePath.length() - 15) + FILE_NAME);
 
             String userId = UserHandler.getUserId(user);
+            System.out.println(userId);
             if (userId != null) {
                 req.setAttribute(PARAM_USERNAME, user.getName());
                 Cookie userIdCookie = new Cookie(COOKIE_USER_ID, userId);
@@ -57,3 +57,4 @@ public class LoginServlet extends HttpServlet {
         }
     }
 }
+

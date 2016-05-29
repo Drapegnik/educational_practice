@@ -18,6 +18,19 @@
     <link rel="stylesheet" href="style.css">
     <title>Login | Chat</title>
 </head>
+
+<script>
+    function getCookie(name) {
+        var matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+
+    if (getCookie('uid') != null)
+        window.location = "http://localhost:8080/homepage.jsp";
+</script>
+
 <body class="all">
 <header class="header">
     <div class="hed-inn">

@@ -30,10 +30,11 @@
 </header>
 <section class="content">
     <div class="form-group">
-        <label class="control-label marg" for="name">Hello, <c:out value="${requestScope.username}"></c:out>!</label>
-        <input id="name" type="text" value="${requestScope.username}" hidden>
+        <label class="control-label marg" for="name">Hello, <span id="locname"></span> <c:out
+                value="${requestScope.username}"></c:out>!</label>
+        <input id="name" type="text" value="${requestScope.username}" hidden><br>
+        <button class="logout btn marg" onclick="logOut()">Log out</button>
     </div>
-
     <div class="chat-block">
         <ul id="chat" class="chat">
 

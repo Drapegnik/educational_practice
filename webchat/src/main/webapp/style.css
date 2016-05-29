@@ -191,3 +191,8 @@ li > a {
 .err {
     color: #d9534f;
 }
+
+.logout {
+    background-color: #d9534f;
+    border-color:  #d9534f;
+}
