@@ -1,4 +1,4 @@
-# Educational Practice 
+# Educational Practice
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/eba827d71760419881018c6eb531230a)](https://www.codacy.com/app/Drapegnik/educational_practice?utm_source=github.com&utm_medium=referral&utm_content=Drapegnik/educational_practice&utm_campaign=badger)
 
